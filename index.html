@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ohlala Croisant Storefour</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="min-h-screen bg-slate-100">
+
+    <footer class="bg-slate-950 text-slate-100">
+      <section
+        aria-labelledby="contacto-titulo"
+        class="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8"
+      >
+        <div class="grid gap-10 lg:grid-cols-2 lg:items-start">
+          <div class="space-y-4">
+            <p class="inline-block rounded-full border border-cyan-400/40 bg-cyan-400/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300">Atencion personalizada</p>
+            <h2 id="contacto-titulo" class="text-3xl font-bold tracking-tight sm:text-4xl">Contacto</h2>
+            <p class="max-w-md text-sm leading-6 text-slate-300 sm:text-base">
+              Escribenos y te ayudamos con tallas, envios o disponibilidad de colecciones.
+            </p>
+          </div>
+
+          <form action="#" method="post" class="rounded-2xl border border-slate-800 bg-slate-900/80 p-6 shadow-2xl shadow-black/30 backdrop-blur sm:p-8">
+            <div class="space-y-5">
+              <div>
+                <label for="nombre" class="mb-2 block text-sm font-medium text-slate-200">Nombre</label>
+                <input
+                  id="nombre"
+                  name="nombre"
+                  type="text"
+                  required
+                  class="w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-sm text-slate-100 outline-none transition focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/30"
+                  placeholder="Tu nombre"
+                />
+              </div>
+
+              <div>
+                <label for="email" class="mb-2 block text-sm font-medium text-slate-200">Correo electronico</label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  required
+                  class="w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-sm text-slate-100 outline-none transition focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/30"
+                  placeholder="nombre@correo.com"
+                />
+              </div>
+
+              <div>
+                <label for="mensaje" class="mb-2 block text-sm font-medium text-slate-200">Mensaje</label>
+                <textarea
+                  id="mensaje"
+                  name="mensaje"
+                  rows="4"
+                  required
+                  class="w-full resize-none rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-sm text-slate-100 outline-none transition focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/30"
+                  placeholder="Cuentanos en que podemos ayudarte"
+                ></textarea>
+              </div>
+
+              <button
+                type="submit"
+                class="w-full rounded-xl bg-cyan-400 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-slate-900"
+              >
+                Enviar
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </footer>
+  </body>
+</html>
