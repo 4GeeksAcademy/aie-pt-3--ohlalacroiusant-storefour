@@ -6,6 +6,8 @@
   <title>Ohlala Croisant Storefour | Home</title>
   <meta name="description" content="Pasteleria artesanal de lujo con croissants unicos y una experiencia elegante." />
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script defer src="components/layout-components.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet" />
@@ -87,135 +89,12 @@
   </script>
 </head>
 <body class="overflow-x-hidden">
-  <header class="sticky top-0 z-40 border-b border-amber-900/10 bg-[color:var(--paper)]/90 backdrop-blur-md">
-    <nav class="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8" aria-label="Navegacion principal">
-      <a href="#" class="group flex items-center gap-3" aria-label="Ir al inicio">
-        <figure class="relative h-14 w-14 overflow-hidden rounded-full border border-amber-900/15 bg-amber-50 shadow-sm">
-          <svg viewBox="0 0 96 96" role="img" aria-label="Croisant con txapela y camiseta blanca de lunas rojas" class="h-full w-full">
-            <defs>
-              <linearGradient id="croisantBase" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#f4bf67"></stop>
-                <stop offset="100%" stop-color="#d78b3f"></stop>
-              </linearGradient>
-            </defs>
-            <rect width="96" height="96" fill="#fdf7ec"></rect>
-            <ellipse cx="48" cy="88" rx="24" ry="5" fill="#d8b78a" opacity="0.3"></ellipse>
-            <path d="M22 44c4-13 16-21 27-21s23 8 27 21c-3 2-6 2-9 1-2-7-9-12-18-12s-16 5-18 12c-3 1-6 1-9-1z" fill="url(#croisantBase)"></path>
-            <path d="M24 46c2 8 10 14 25 14s23-6 25-14c-1-1-4-2-7-2-3 6-10 10-18 10s-15-4-18-10c-3 0-6 1-7 2z" fill="#b56f2f"></path>
-            <path d="M31 40l5 8M42 36l3 8M54 36l-3 8M65 40l-5 8" stroke="#a35f23" stroke-width="2" stroke-linecap="round"></path>
-            <ellipse cx="39" cy="25" rx="15" ry="9" fill="#111"></ellipse>
-            <path d="M24 26c0-5 6-10 15-10 7 0 13 3 15 7-4-2-9-2-14 0-5 2-11 3-16 3z" fill="#8b1e30"></path>
-            <rect x="33" y="57" width="30" height="22" rx="8" fill="#fff"></rect>
-            <circle cx="41" cy="64" r="2.3" fill="#bc1733"></circle>
-            <circle cx="49" cy="67" r="2.3" fill="#bc1733"></circle>
-            <circle cx="56" cy="63" r="2.3" fill="#bc1733"></circle>
-            <circle cx="45" cy="73" r="2.3" fill="#bc1733"></circle>
-            <circle cx="54" cy="74" r="2.3" fill="#bc1733"></circle>
-          </svg>
-          <figcaption class="sr-only">Logo oficial de Ohlala Croisant</figcaption>
-        </figure>
-        <div>
-          <p class="text-2xl font-semibold leading-none tracking-tight text-[color:var(--wine)]">Ohlala</p>
-          <p class="text-xs uppercase tracking-[0.26em] text-amber-900/70">Croisant Storefour</p>
-        </div>
-      </a>
-
-      <ul class="hidden items-center gap-8 text-sm font-medium text-amber-950 md:flex">
-        <li><a class="transition hover:text-[color:var(--wine)]" href="#collection">Coleccion</a></li>
-        <li><a class="transition hover:text-[color:var(--wine)]" href="#signature">Signature</a></li>
-        <li><a class="transition hover:text-[color:var(--wine)]" href="#contact">Contacto</a></li>
-      </ul>
-
-      <div class="flex items-center gap-2 sm:gap-3">
-        <form class="hidden items-center rounded-full border border-amber-900/15 bg-white pr-1 focus-within:border-[color:var(--wine)] sm:flex" action="#" method="get">
-          <label for="search" class="sr-only">Buscar</label>
-          <input id="search" type="search" placeholder="Buscar..." class="w-full bg-transparent px-4 py-2 text-sm outline-none ring-0 placeholder:text-amber-900/45" />
-          <button type="submit" class="rounded-full bg-white p-1.5 text-amber-950 shadow-sm transition hover:text-[color:var(--wine)]" aria-label="Realizar búsqueda">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4">
-              <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11ZM2 9a7 7 0 1 1 12.452 4.391l3.328 3.329a.75.75 0 1 1-1.06 1.06l-3.329-3.328A7 7 0 0 1 2 9Z" clip-rule="evenodd" />
-            </svg>
-          </button>
-        </form>
-        <button class="rounded-full bg-[color:var(--wine)] px-3 py-2 text-xs font-semibold uppercase tracking-widest text-white shadow-sm transition hover:bg-[#631727] sm:text-sm" aria-label="Abrir carrito">
-          Carrito (0)
-        </button>
-
-                <div class="relative">
-          <button id="user-menu-button" class="rounded-full p-2 text-amber-950 transition hover:text-[color:var(--wine)] hover:bg-amber-100/50" aria-label="Abrir menú de usuario" aria-haspopup="true" aria-expanded="false">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-7 w-7">
-              <path fill-rule="evenodd" d="M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0Zm-5.5-2.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0ZM10 12a5.99 5.99 0 0 0-4.793 2.39A6.483 6.483 0 0 0 10 16.5a6.483 6.483 0 0 0 4.793-2.11A5.99 5.99 0 0 0 10 12Z" clip-rule="evenodd" />
-            </svg>
-          </button>
-          <div id="user-menu-dropdown" class="hidden absolute right-0 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none opacity-0 scale-95" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button">
-            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Cuenta</a>
-            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Pedidos</a>
-            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Perfil</a>
-            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Ajustes</a>
-            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Cerrar sesión</a>
-          </div>
-        </div>
-      </div>
-    </nav>
-  </header>
+  <site-navbar></site-navbar>
 
   <main>
   </main>
 
-  <footer id="contact" class="border-t border-amber-900/10 bg-[color:var(--paper)]">
-    <div class="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:px-6 md:grid-cols-3 lg:px-8">
-      <section>
-        <h2 class="text-2xl text-amber-950">Ohlala Croisant Storefour</h2>
-        <p class="mt-2 text-sm text-amber-900/80">Atelier premium de viennoiserie en una experiencia digital refinada.</p>
-      </section>
-      <section>
-        <h2 class="text-lg font-semibold text-amber-950">Enlaces</h2>
-        <ul class="mt-2 space-y-2 text-sm text-amber-900/80">
-          <li><a class="hover:text-[color:var(--wine)]" href="#collection">Coleccion</a></li>
-          <li><a class="hover:text-[color:var(--wine)]" href="#signature">Edicion limitada</a></li>
-          <li><a class="hover:text-[color:var(--wine)]" href="#">Terminos</a></li>
-        </ul>
-      </section>
-      <section>
-        <h2 class="text-lg font-semibold text-amber-950">Newsletter</h2>
-        <form class="mt-2 flex gap-2" action="#" method="post">
-          <label for="email" class="sr-only">Correo</label>
-          <input id="email" type="email" name="email" required placeholder="tu@email.com" class="w-full rounded-full border border-amber-900/15 bg-white px-4 py-2 text-sm outline-none ring-0 placeholder:text-amber-900/45 focus:border-[color:var(--wine)]" />
-          <button type="submit" class="rounded-full bg-[color:var(--wine)] px-4 py-2 text-xs font-semibold uppercase tracking-[0.15em] text-white">OK</button>
-        </form>
-      </section>
-      <section aria-labelledby="contact-form-title" class="md:col-span-3 rounded-[2rem] border border-amber-900/10 bg-white/70 p-6 shadow-[0_24px_80px_-48px_rgba(124,31,48,0.45)] backdrop-blur-sm sm:p-8">
-        <div class="grid gap-6 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
-          <div>
-            <p class="text-xs font-semibold uppercase tracking-[0.22em] text-[color:var(--wine)]">Atencion personalizada</p>
-            <h2 id="contact-form-title" class="mt-2 text-3xl text-amber-950">Contacto</h2>
-            <p class="mt-3 max-w-md text-sm leading-6 text-amber-900/75">Escribenos para pedidos especiales, colaboraciones o consultas sobre nuestras colecciones de temporada. Te responderemos con el mismo cuidado con el que horneamos cada pieza.</p>
-          </div>
-
-          <form class="grid gap-4 sm:grid-cols-2" action="#" method="post">
-            <div>
-              <label for="contact-name" class="mb-2 block text-sm font-medium text-amber-950">Nombre</label>
-              <input id="contact-name" type="text" name="contact-name" required placeholder="Tu nombre" class="w-full rounded-2xl border border-amber-900/15 bg-[color:var(--paper)] px-4 py-3 text-sm text-amber-950 outline-none transition placeholder:text-amber-900/45 focus:border-[color:var(--wine)] focus:ring-2 focus:ring-[color:var(--wine)]/15" />
-            </div>
-            <div>
-              <label for="contact-email" class="mb-2 block text-sm font-medium text-amber-950">Correo electronico</label>
-              <input id="contact-email" type="email" name="contact-email" required placeholder="tu@email.com" class="w-full rounded-2xl border border-amber-900/15 bg-[color:var(--paper)] px-4 py-3 text-sm text-amber-950 outline-none transition placeholder:text-amber-900/45 focus:border-[color:var(--wine)] focus:ring-2 focus:ring-[color:var(--wine)]/15" />
-            </div>
-            <div class="sm:col-span-2">
-              <label for="contact-message" class="mb-2 block text-sm font-medium text-amber-950">Mensaje</label>
-              <textarea id="contact-message" name="contact-message" rows="4" required placeholder="Cuentanos en que podemos ayudarte" class="w-full rounded-3xl border border-amber-900/15 bg-[color:var(--paper)] px-4 py-3 text-sm text-amber-950 outline-none transition placeholder:text-amber-900/45 focus:border-[color:var(--wine)] focus:ring-2 focus:ring-[color:var(--wine)]/15"></textarea>
-            </div>
-            <div class="sm:col-span-2 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-              <p class="text-sm text-amber-900/70">Pedidos privados, eventos y asesoramiento personalizado.</p>
-              <button type="submit" class="inline-flex items-center justify-center rounded-full bg-[color:var(--wine)] px-6 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-[#631727] focus:outline-none focus:ring-2 focus:ring-[color:var(--wine)] focus:ring-offset-2 focus:ring-offset-white">Enviar consulta</button>
-            </div>
-          </form>
-        </div>
-      </section>
-    </div>
-    <p class="border-t border-amber-900/10 px-4 py-4 text-center text-xs uppercase tracking-[0.2em] text-amber-900/70 sm:px-6 lg:px-8">
-      Crafted for luxury pastry lovers.
-    </p>
-  </footer>
+  <site-footer></site-footer>
 
   <script type="application/ld+json">
   {
@@ -247,6 +126,5 @@
     ]
   }
   </script>
-  <script src="app.js" defer></script>
 </body>
 </html>
