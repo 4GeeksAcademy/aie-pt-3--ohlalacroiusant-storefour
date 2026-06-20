@@ -35,7 +35,7 @@
       <li><a class="transition hover:text-[color:var(--wine)]" href="index.html">Home</a></li>
       <li><a class="transition hover:text-[color:var(--wine)]" href="catalogo.html">Catalogo</a></li>
       <li><a class="transition hover:text-[color:var(--wine)]" href="index.html#collection">Coleccion</a></li>
-      <li><a class="transition hover:text-[color:var(--wine)]" href="#contact">Contacto</a></li>
+      <li><a class="transition hover:text-[color:var(--wine)]" href="contact.html">Contacto</a></li>
     </ul>
 
     <div class="flex items-center gap-2 sm:gap-3">
@@ -53,7 +53,7 @@
       </button>
 
       <div x-data="{ open: false }" class="relative">
-        <button @click="open = !open" class="rounded-full p-2 text-amber-950 transition hover:text-[color:var(--wine)] hover:bg-amber-100/50" aria-label="Abrir menu de usuario" aria-haspopup="true" :aria-expanded="open">
+        <button id="user-menu-button" @click="open = !open" class="rounded-full p-2 text-amber-950 transition hover:text-[color:var(--wine)] hover:bg-amber-100/50" aria-label="Abrir menu de usuario" aria-haspopup="true" :aria-expanded="open">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-7 w-7">
             <path fill-rule="evenodd" d="M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0Zm-5.5-2.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0ZM10 12a5.99 5.99 0 0 0-4.793 2.39A6.483 6.483 0 0 0 10 16.5a6.483 6.483 0 0 0 4.793-2.11A5.99 5.99 0 0 0 10 12Z" clip-rule="evenodd" />
           </svg>

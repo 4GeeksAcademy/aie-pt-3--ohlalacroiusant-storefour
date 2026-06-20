@@ -8,12 +8,21 @@
 			content="Vista de producto de Ohlala Croisant Storefour"
 		/>
 		<title>Vista de producto | Ohlala Croisant Storefour</title>
+		<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+		<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+		<script defer src="components/layout-components.js"></script>
 		<link rel="stylesheet" href="product.css" />
+		<style>
+			:root {
+				--cream: #fdf5e8;
+				--gold: #c08a43;
+				--wine: #7c1f30;
+				--paper: #fffaf0;
+			}
+		</style>
 	</head>
-	<body class="product-detail-page">
-		<header class="product-detail-header" aria-label="Encabezado de la página">
-			<!-- Integración pendiente: aquí se montará el navbar reutilizable del proyecto -->
-		</header>
+	<body class="product-detail-page overflow-x-hidden">
+		<site-navbar></site-navbar>
 
 		<main class="product-detail-main">
 			<article class="product-detail-card" aria-labelledby="product-detail-name">
@@ -54,8 +63,6 @@
 			</article>
 		</main>
 
-		<footer class="product-detail-footer" aria-label="Pie de página">
-			<!-- Integración pendiente: aquí se montará el footer reutilizable del proyecto -->
-		</footer>
+		<site-footer></site-footer>
 	</body>
 </html>
