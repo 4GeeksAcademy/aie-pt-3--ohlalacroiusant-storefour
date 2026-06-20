@@ -6,6 +6,7 @@
   <title>Ohlala Croisant Storefour | Home</title>
   <meta name="description" content="Pasteleria artesanal de lujo con croissants unicos y una experiencia elegante." />
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet" />
@@ -127,12 +128,33 @@
       </ul>
 
       <div class="flex items-center gap-2 sm:gap-3">
-        <button class="rounded-full border border-amber-900/15 bg-white px-3 py-2 text-xs font-semibold uppercase tracking-widest text-amber-950 transition hover:border-[color:var(--wine)] hover:text-[color:var(--wine)] sm:text-sm" aria-label="Buscar">
-          Buscar
-        </button>
+        <form class="hidden items-center rounded-full border border-amber-900/15 bg-white pr-1 focus-within:border-[color:var(--wine)] sm:flex" action="#" method="get">
+          <label for="search" class="sr-only">Buscar</label>
+          <input id="search" type="search" placeholder="Buscar..." class="w-full bg-transparent px-4 py-2 text-sm outline-none ring-0 placeholder:text-amber-900/45" />
+          <button type="submit" class="rounded-full bg-white p-1.5 text-amber-950 shadow-sm transition hover:text-[color:var(--wine)]" aria-label="Realizar búsqueda">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4">
+              <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11ZM2 9a7 7 0 1 1 12.452 4.391l3.328 3.329a.75.75 0 1 1-1.06 1.06l-3.329-3.328A7 7 0 0 1 2 9Z" clip-rule="evenodd" />
+            </svg>
+          </button>
+        </form>
         <button class="rounded-full bg-[color:var(--wine)] px-3 py-2 text-xs font-semibold uppercase tracking-widest text-white shadow-sm transition hover:bg-[#631727] sm:text-sm" aria-label="Abrir carrito">
           Carrito (0)
         </button>
+
+        <div x-data="{ open: false }" class="relative">
+          <button @click="open = !open" class="rounded-full p-2 text-amber-950 transition hover:text-[color:var(--wine)] hover:bg-amber-100/50" aria-label="Abrir menú de usuario" aria-haspopup="true" :aria-expanded="open">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-7 w-7">
+              <path fill-rule="evenodd" d="M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0Zm-5.5-2.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0ZM10 12a5.99 5.99 0 0 0-4.793 2.39A6.483 6.483 0 0 0 10 16.5a6.483 6.483 0 0 0 4.793-2.11A5.99 5.99 0 0 0 10 12Z" clip-rule="evenodd" />
+            </svg>
+          </button>
+          <div x-show="open" @click.outside="open = false" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="absolute right-0 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" style="display: none;">
+            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Cuenta</a>
+            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Pedidos</a>
+            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Perfil</a>
+            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Ajustes</a>
+            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Cerrar sesión</a>
+          </div>
+        </div>
       </div>
     </nav>
   </header>
