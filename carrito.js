@@ -101,8 +101,44 @@
   function initCatalogPage() {
     const filterButtons = document.querySelectorAll(".filter-btn");
     const catalogItems = document.querySelectorAll(".catalog-item");
+    const categorySelect = document.getElementById("catalog-category-filter");
+    const sizeSelect = document.getElementById("catalog-size-filter");
+    const resetFiltersButton = document.getElementById("catalog-reset-filters");
 
-    if (!filterButtons.length || !catalogItems.length) return;
+    if (!catalogItems.length) return;
+
+    let activeCategory = categorySelect?.value || "all";
+    let activeSize = sizeSelect?.value || "all";
+    const sizeOptionsByCategory = {
+      all: ["all", "38", "39", "40", "41", "42", "s", "m", "l", "xl", "u"],
+      calzado: ["all", "38", "39", "40", "41", "42"],
+      camisas: ["all", "s", "m", "l", "xl"],
+      pantalones: ["all", "s", "m", "l", "xl"],
+      accesorios: ["all", "u"]
+    };
+
+    function getSizeLabel(sizeValue) {
+      if (sizeValue === "all") return "Todas";
+      if (sizeValue === "u") return "Unica";
+      return sizeValue.toUpperCase();
+    }
+
+    function renderSizeOptionsForCategory(category) {
+      if (!sizeSelect) return;
+
+      const nextOptions = sizeOptionsByCategory[category] || sizeOptionsByCategory.all;
+      const currentValueIsValid = nextOptions.includes(activeSize);
+
+      if (!currentValueIsValid) {
+        activeSize = "all";
+      }
+
+      sizeSelect.innerHTML = nextOptions
+        .map((sizeValue) => `<option value="${sizeValue}">${getSizeLabel(sizeValue)}</option>`)
+        .join("");
+
+      sizeSelect.value = activeSize;
+    }
 
     function setActiveButton(activeButton) {
       filterButtons.forEach((button) => {
@@ -115,21 +151,87 @@
       });
     }
 
-    function applyFilter(filter) {
+    function applyFilter() {
       catalogItems.forEach((item) => {
         const category = item.getAttribute("data-category");
-        const showItem = filter === "all" || category === filter;
+        const size = (item.getAttribute("data-size") || "all").toLowerCase();
+        const showCategory = activeCategory === "all" || category === activeCategory;
+        const showSize = activeSize === "all" || size === activeSize;
+        const showItem = showCategory && showSize;
         item.classList.toggle("hidden", !showItem);
       });
     }
 
-    filterButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        const filter = button.getAttribute("data-filter");
-        setActiveButton(button);
-        applyFilter(filter);
+    if (filterButtons.length) {
+      filterButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          activeCategory = button.getAttribute("data-filter") || "all";
+          renderSizeOptionsForCategory(activeCategory);
+          setActiveButton(button);
+
+          if (categorySelect) {
+            categorySelect.value = activeCategory;
+          }
+
+          applyFilter();
+        });
       });
-    });
+    }
+
+    if (categorySelect) {
+      categorySelect.addEventListener("change", (event) => {
+        activeCategory = event.target.value;
+        renderSizeOptionsForCategory(activeCategory);
+
+        if (filterButtons.length) {
+          const matchingButton = Array.from(filterButtons).find(
+            (button) => button.getAttribute("data-filter") === activeCategory
+          );
+          if (matchingButton) {
+            setActiveButton(matchingButton);
+          }
+        }
+
+        applyFilter();
+      });
+    }
+
+    if (sizeSelect) {
+      sizeSelect.addEventListener("change", (event) => {
+        activeSize = event.target.value;
+        applyFilter();
+      });
+    }
+
+    if (resetFiltersButton) {
+      resetFiltersButton.addEventListener("click", () => {
+        activeCategory = "all";
+        activeSize = "all";
+        renderSizeOptionsForCategory(activeCategory);
+
+        if (categorySelect) {
+          categorySelect.value = "all";
+        }
+
+        if (sizeSelect) {
+          sizeSelect.value = activeSize;
+        }
+
+        if (filterButtons.length) {
+          const allButton = Array.from(filterButtons).find(
+            (button) => button.getAttribute("data-filter") === "all"
+          );
+          if (allButton) {
+            setActiveButton(allButton);
+          }
+        }
+
+        applyFilter();
+      });
+    }
+
+    renderSizeOptionsForCategory(activeCategory);
+    applyFilter();
 
     catalogItems.forEach((item) => {
       const addButton = item.querySelector("button");
