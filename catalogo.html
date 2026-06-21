@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ohlala Croisant Storefour | Catalogo</title>
+  <meta name="description" content="Catalogo de croissants y pasteleria artesanal de lujo." />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script defer src="components/layout-components.js"></script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #fdf5e8;
+      --gold: #c08a43;
+      --wine: #7c1f30;
+      --ink: #18140f;
+      --paper: #fffaf0;
+      --leaf: #4e6f3d;
+    }
+
+    body {
+      font-family: "Manrope", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 20% 15%, rgba(192, 138, 67, 0.14), transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(124, 31, 48, 0.12), transparent 45%),
+        linear-gradient(160deg, #fffaf0 0%, #fef6e6 55%, #fff3dd 100%);
+      min-height: 100vh;
+    }
+
+    h1, h2, h3 {
+      font-family: "Cormorant Garamond", serif;
+      letter-spacing: 0.01em;
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Ohlala Croisant Storefour",
+    "url": "https://ohlalacroisant.example",
+    "logo": "https://ohlalacroisant.example/logo-croisant-txapela.svg",
+    "sameAs": [
+      "https://www.instagram.com/ohlalacroisant",
+      "https://www.facebook.com/ohlalacroisant"
+    ]
+  }
+  </script>
+</head>
+<body class="overflow-x-hidden">
+  <site-navbar></site-navbar>
+
+  <main>
+  
+    <section class="bg-amber-50/40 py-12 px-4 sm:px-6 lg:px-8 font-sans">
+  <div class="max-w-7xl mx-auto">
+    
+    <div class="text-center mb-12">
+      <span class="text-amber-600 font-semibold tracking-widest uppercase text-sm">Nuestras Colecciones</span>
+      <h2 class="text-4xl sm:text-5xl font-black text-amber-950 mt-2 mb-4 tracking-tight">
+        Catalogo Ohlala Fashion
+      </h2>
+      <p class="max-w-md mx-auto text-gray-600 text-base sm:text-lg">
+        Descubre piezas seleccionadas con estilo premium para elevar tu look en cada temporada.
+      </p>
+      <div class="w-24 h-1 bg-amber-500 mx-auto mt-6 rounded-full"></div>
+    </div>
+
+    <nav class="flex flex-wrap justify-center gap-2 mb-10" aria-label="Filtros de productos">
+      <button data-filter="all" aria-pressed="true" class="filter-btn bg-amber-900 text-white px-5 py-2 rounded-full text-sm font-medium shadow-sm">Todos</button>
+      <button data-filter="calzado" aria-pressed="false" class="filter-btn bg-white text-gray-700 hover:bg-amber-100 px-5 py-2 rounded-full text-sm font-medium shadow-sm transition-colors">Calzado</button>
+      <button data-filter="camisas" aria-pressed="false" class="filter-btn bg-white text-gray-700 hover:bg-amber-100 px-5 py-2 rounded-full text-sm font-medium shadow-sm transition-colors">Camisas</button>
+      <button data-filter="pantalones" aria-pressed="false" class="filter-btn bg-white text-gray-700 hover:bg-amber-100 px-5 py-2 rounded-full text-sm font-medium shadow-sm transition-colors">Pantalones</button>
+      <button data-filter="accesorios" aria-pressed="false" class="filter-btn bg-white text-gray-700 hover:bg-amber-100 px-5 py-2 rounded-full text-sm font-medium shadow-sm transition-colors">Accesorios</button>
+    </nav>
+
+    <div id="catalog-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+      <article data-category="calzado" class="catalog-item bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col">
+        <div class="relative pt-[75%] overflow-hidden bg-amber-50">
+          <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80" alt="Zapatillas urbanas rojas" class="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+        </div>
+        <div class="p-5 flex flex-col flex-grow">
+          <span class="text-xs font-semibold tracking-wider text-amber-600 uppercase mb-1">Calzado</span>
+          <h3 class="text-xl font-bold text-gray-800 mb-2">Sneakers Pulse Red</h3>
+          <p class="text-gray-600 text-sm mb-4 flex-grow">Diseño urbano con suela amortiguada y acabado en piel sintetica para uso diario con estilo.</p>
+          <div class="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
+            <span class="text-2xl font-black text-amber-900">$79.00</span>
+            <button class="bg-amber-600 hover:bg-amber-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 text-sm">Añadir</button>
+          </div>
+        </div>
+      </article>
+
+      <article data-category="calzado" class="catalog-item bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col">
+        <div class="relative pt-[75%] overflow-hidden bg-amber-50">
+          <img src="https://images.unsplash.com/photo-1460353581641-37baddab0fa2?auto=format&fit=crop&w=600&q=80" alt="Tenis blancos minimalistas" class="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+        </div>
+        <div class="p-5 flex flex-col flex-grow">
+          <span class="text-xs font-semibold tracking-wider text-amber-600 uppercase mb-1">Calzado</span>
+          <h3 class="text-xl font-bold text-gray-800 mb-2">Tenis Minimal White</h3>
+          <p class="text-gray-600 text-sm mb-4 flex-grow">Silueta limpia y ligera que combina con looks casuales o smart casual.</p>
+          <div class="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
+            <span class="text-2xl font-black text-amber-900">$72.00</span>
+            <button class="bg-amber-600 hover:bg-amber-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 text-sm">Añadir</button>
+          </div>
+        </div>
+      </article>
+
+      <article data-category="calzado" class="catalog-item bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col">
+        <div class="relative pt-[75%] overflow-hidden bg-amber-50">
+          <img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?auto=format&fit=crop&w=600&q=80" alt="Mocasines de cuero negro" class="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+        </div>
+        <div class="p-5 flex flex-col flex-grow">
+          <span class="text-xs font-semibold tracking-wider text-amber-600 uppercase mb-1">Calzado</span>
+          <h3 class="text-xl font-bold text-gray-800 mb-2">Mocasines Noir Classic</h3>
+          <p class="text-gray-600 text-sm mb-4 flex-grow">Elegancia atemporal en cuero pulido con plantilla comoda para jornadas largas.</p>
+          <div class="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
+            <span class="text-2xl font-black text-amber-900">$95.00</span>
+            <button class="bg-amber-600 hover:bg-amber-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 text-sm">Añadir</button>
+          </div>
+        </div>
+      </article>
+
+      <article data-category="calzado" class="catalog-item bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col">
+        <div class="relative pt-[75%] overflow-hidden bg-amber-50">
+          <img src="https://images.unsplash.com/photo-1514996937319-344454492b37?auto=format&fit=crop&w=600&q=80" alt="Tacones nude de vestir" class="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+        </div>
+        <div class="p-5 flex flex-col flex-grow">
+          <span class="text-xs font-semibold tracking-wider text-amber-600 uppercase mb-1">Calzado</span>
+          <h3 class="text-xl font-bold text-gray-800 mb-2">Tacones Nude Élégant</h3>
+          <p class="text-gray-600 text-sm mb-4 flex-grow">Tacones estilizados con punta fina y acabado satinado para eventos formales.</p>
+          <div class="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
+            <span class="text-2xl font-black text-amber-900">$88.00</span>
+            <button class="bg-amber-600 hover:bg-amber-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 text-sm">Añadir</button>
+          </div>
+        </div>
+      </article>
+
+      <article data-category="calzado" class="catalog-item bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col">
+        <div class="relative pt-[75%] overflow-hidden bg-amber-50">
+          <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=600&q=80" alt="Botas marrones de cuero" class="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+        </div>
+        <div class="p-5 flex flex-col flex-grow">
+          <span class="text-xs font-semibold tracking-wider text-amber-600 uppercase mb-1">Calzado</span>
+          <h3 class="text-xl font-bold text-gray-800 mb-2">Botas Heritage Brown</h3>
+          <p class="text-gray-600 text-sm mb-4 flex-grow">Botas robustas de inspiracion vintage con suela antideslizante y costuras reforzadas.</p>
+          <div class="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
+            <span class="text-2xl font-black text-amber-900">$110.00</span>
+            <button class="bg-amber-600 hover:bg-amber-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 text-sm">Añadir</button>
+          </div>
+        </div>
+      </article>
+
+      <article data-category="camisas" class="catalog-item bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col">
+        <div class="relative pt-[75%] overflow-hidden bg-amber-50">
+          <img src="https://images.unsplash.com/photo-1603252109303-2751441dd157?auto=format&fit=crop&w=600&q=80" alt="Camisa blanca de lino" class="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+        </div>
+        <div class="p-5 flex flex-col flex-grow">
+          <span class="text-xs font-semibold tracking-wider text-amber-600 uppercase mb-1">Camisas</span>
+          <h3 class="text-xl font-bold text-gray-800 mb-2">Camisa Lino Blanc</h3>
+          <p class="text-gray-600 text-sm mb-4 flex-grow">Tejido fresco y transpirable con corte regular para dias calidos y sofisticados.</p>
+          <div class="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
+            <span class="text-2xl font-black text-amber-900">$58.00</span>
+            <button class="bg-amber-600 hover:bg-amber-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 text-sm">Añadir</button>
+          </div>
+        </div>
+      </article>
+
+      <article data-category="camisas" class="catalog-item bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col">
+        <div class="relative pt-[75%] overflow-hidden bg-amber-50">
+          <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=600&q=80" alt="Camisa denim azul" class="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+        </div>
+        <div class="p-5 flex flex-col flex-grow">
+          <span class="text-xs font-semibold tracking-wider text-amber-600 uppercase mb-1">Camisas</span>
+          <h3 class="text-xl font-bold text-gray-800 mb-2">Camisa Denim Atlas</h3>
+          <p class="text-gray-600 text-sm mb-4 flex-grow">Denim liviano con botonadura frontal y un fit contemporaneo para todo el año.</p>
+          <div class="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
+            <span class="text-2xl font-black text-amber-900">$62.00</span>
+            <button class="bg-amber-600 hover:bg-amber-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 text-sm">Añadir</button>
+          </div>
+        </div>
+      </article>
+
+      <article data-category="camisas" class="catalog-item bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col">
+        <div class="relative pt-[75%] overflow-hidden bg-amber-50">
+          <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=600&q=80" alt="Sobrecamisa beige" class="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+        </div>
+        <div class="p-5 flex flex-col flex-grow">
+          <span class="text-xs font-semibold tracking-wider text-amber-600 uppercase mb-1">Camisas</span>
+          <h3 class="text-xl font-bold text-gray-800 mb-2">Sobrecamisa Sable</h3>
+          <p class="text-gray-600 text-sm mb-4 flex-grow">Prenda versatil con textura suave para capas de entretiempo en looks urbanos.</p>
+          <div class="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
+            <span class="text-2xl font-black text-amber-900">$66.00</span>
+            <button class="bg-amber-600 hover:bg-amber-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 text-sm">Añadir</button>
+          </div>
+        </div>
+      </article>
+
+      <article data-category="camisas" class="catalog-item bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col">
+        <div class="relative pt-[75%] overflow-hidden bg-amber-50">
+          <img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?auto=format&fit=crop&w=600&q=80" alt="Camisa oxford azul claro" class="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+        </div>
+        <div class="p-5 flex flex-col flex-grow">
+          <span class="text-xs font-semibold tracking-wider text-amber-600 uppercase mb-1">Camisas</span>
+          <h3 class="text-xl font-bold text-gray-800 mb-2">Oxford Sky Fit</h3>
+          <p class="text-gray-600 text-sm mb-4 flex-grow">Camisa de corte slim con cuello estructurado para oficina o cenas especiales.</p>
+          <div class="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
+            <span class="text-2xl font-black text-amber-900">$54.00</span>
+            <button class="bg-amber-600 hover:bg-amber-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 text-sm">Añadir</button>
+          </div>
+        </div>
+      </article>
+
+      <article data-category="camisas" class="catalog-item bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col">
+        <div class="relative pt-[75%] overflow-hidden bg-amber-50">
+          <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=80" alt="Camisa negra satinada" class="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+        </div>
+        <div class="p-5 flex flex-col flex-grow">
+          <span class="text-xs font-semibold tracking-wider text-amber-600 uppercase mb-1">Camisas</span>
+          <h3 class="text-xl font-bold text-gray-800 mb-2">Camisa Satin Night</h3>
+          <p class="text-gray-600 text-sm mb-4 flex-grow">Acabado satinado y caida fluida para elevar outfits nocturnos sin esfuerzo.</p>
+          <div class="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
+            <span class="text-2xl font-black text-amber-900">$64.00</span>
+            <button class="bg-amber-600 hover:bg-amber-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 text-sm">Añadir</button>
+          </div>
+        </div>
+      </article>
+
+      <article data-category="pantalones" class="catalog-item bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col">
+        <div class="relative pt-[75%] overflow-hidden bg-amber-50">
+          <img src="https://images.unsplash.com/photo-1473966968600-fa801b869a1a?auto=format&fit=crop&w=600&q=80" alt="Pantalones chinos beige" class="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+        </div>
+        <div class="p-5 flex flex-col flex-grow">
+          <span class="text-xs font-semibold tracking-wider text-amber-600 uppercase mb-1">Pantalones</span>
+          <h3 class="text-xl font-bold text-gray-800 mb-2">Chinos Sand Tailor</h3>
+          <p class="text-gray-600 text-sm mb-4 flex-grow">Corte recto con tela elastica para combinar comodidad y presencia impecable.</p>
+          <div class="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
+            <span class="text-2xl font-black text-amber-900">$68.00</span>
+            <button class="bg-amber-600 hover:bg-amber-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 text-sm">Añadir</button>
+          </div>
+        </div>
+      </article>
+
+      <article data-category="pantalones" class="catalog-item bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col">
+        <div class="relative pt-[75%] overflow-hidden bg-amber-50">
+          <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=600&q=80" alt="Jeans azul oscuro" class="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+        </div>
+        <div class="p-5 flex flex-col flex-grow">
+          <span class="text-xs font-semibold tracking-wider text-amber-600 uppercase mb-1">Pantalones</span>
+          <h3 class="text-xl font-bold text-gray-800 mb-2">Jean Indigo Straight</h3>
+          <p class="text-gray-600 text-sm mb-4 flex-grow">Denim premium de tiro medio con lavado oscuro para un look moderno y limpio.</p>
+          <div class="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
+            <span class="text-2xl font-black text-amber-900">$74.00</span>
+            <button class="bg-amber-600 hover:bg-amber-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 text-sm">Añadir</button>
+          </div>
+        </div>
+      </article>
+
+      <article data-category="pantalones" class="catalog-item bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col">
+        <div class="relative pt-[75%] overflow-hidden bg-amber-50">
+          <img src="https://img.magnific.com/fotos-premium/stylish-pantalones-carga-verde-oliva-multiples-bolsillos-pierna-conica-levitando-mockup_261860-9121.jpg?semt=ais_hybrid&w=740&q=80" alt="Pantalon cargo verde oliva" class="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+        </div>
+        <div class="p-5 flex flex-col flex-grow">
+          <span class="text-xs font-semibold tracking-wider text-amber-600 uppercase mb-1">Pantalones</span>
+          <h3 class="text-xl font-bold text-gray-800 mb-2">Cargo Urban Olive</h3>
+          <p class="text-gray-600 text-sm mb-4 flex-grow">Bolsillos funcionales y ajuste tapered para estilo street con practicidad diaria.</p>
+          <div class="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
+            <span class="text-2xl font-black text-amber-900">$71.00</span>
+            <button class="bg-amber-600 hover:bg-amber-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 text-sm">Añadir</button>
+          </div>
+        </div>
+      </article>
+
+      <article data-category="pantalones" class="catalog-item bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col">
+        <div class="relative pt-[75%] overflow-hidden bg-amber-50">
+          <img src="https://images.unsplash.com/photo-1475180098004-ca77a66827be?auto=format&fit=crop&w=600&q=80" alt="Pantalon palazzo negro" class="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+        </div>
+        <div class="p-5 flex flex-col flex-grow">
+          <span class="text-xs font-semibold tracking-wider text-amber-600 uppercase mb-1">Pantalones</span>
+          <h3 class="text-xl font-bold text-gray-800 mb-2">Palazzo Noir Flow</h3>
+          <p class="text-gray-600 text-sm mb-4 flex-grow">Pierna amplia y movimiento elegante para looks formales o casual chic.</p>
+          <div class="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
+            <span class="text-2xl font-black text-amber-900">$69.00</span>
+            <button class="bg-amber-600 hover:bg-amber-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 text-sm">Añadir</button>
+          </div>
+        </div>
+      </article>
+
+      <article data-category="pantalones" class="catalog-item bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col">
+        <div class="relative pt-[75%] overflow-hidden bg-amber-50">
+          <img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=600&q=80" alt="Jogger gris deportivo" class="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+        </div>
+        <div class="p-5 flex flex-col flex-grow">
+          <span class="text-xs font-semibold tracking-wider text-amber-600 uppercase mb-1">Pantalones</span>
+          <h3 class="text-xl font-bold text-gray-800 mb-2">Jogger Motion Grey</h3>
+          <p class="text-gray-600 text-sm mb-4 flex-grow">Tejido suave con ajuste al tobillo y cintura elastica para confort activo.</p>
+          <div class="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
+            <span class="text-2xl font-black text-amber-900">$59.00</span>
+            <button class="bg-amber-600 hover:bg-amber-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 text-sm">Añadir</button>
+          </div>
+        </div>
+      </article>
+
+      <article data-category="accesorios" class="catalog-item bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col">
+        <div class="relative pt-[75%] overflow-hidden bg-amber-50">
+          <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=600&q=80" alt="Bolso de cuero camel" class="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+        </div>
+        <div class="p-5 flex flex-col flex-grow">
+          <span class="text-xs font-semibold tracking-wider text-amber-600 uppercase mb-1">Accesorios</span>
+          <h3 class="text-xl font-bold text-gray-800 mb-2">Bolso Camel Luxe</h3>
+          <p class="text-gray-600 text-sm mb-4 flex-grow">Bolso estructurado de cuero con herrajes dorados y compartimentos internos.</p>
+          <div class="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
+            <span class="text-2xl font-black text-amber-900">$120.00</span>
+            <button class="bg-amber-600 hover:bg-amber-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 text-sm">Añadir</button>
+          </div>
+        </div>
+      </article>
+
+      <article data-category="accesorios" class="catalog-item bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col">
+        <div class="relative pt-[75%] overflow-hidden bg-amber-50">
+          <img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&w=600&q=80" alt="Reloj metalico plateado" class="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+        </div>
+        <div class="p-5 flex flex-col flex-grow">
+          <span class="text-xs font-semibold tracking-wider text-amber-600 uppercase mb-1">Accesorios</span>
+          <h3 class="text-xl font-bold text-gray-800 mb-2">Reloj Silver Chrono</h3>
+          <p class="text-gray-600 text-sm mb-4 flex-grow">Diseño moderno en acero inoxidable con esfera minimalista y resistencia al agua.</p>
+          <div class="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
+            <span class="text-2xl font-black text-amber-900">$145.00</span>
+            <button class="bg-amber-600 hover:bg-amber-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 text-sm">Añadir</button>
+          </div>
+        </div>
+      </article>
+
+      <article data-category="accesorios" class="catalog-item bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col">
+        <div class="relative pt-[75%] overflow-hidden bg-amber-50">
+          <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=600&q=80" alt="Gafas de sol negras" class="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+        </div>
+        <div class="p-5 flex flex-col flex-grow">
+          <span class="text-xs font-semibold tracking-wider text-amber-600 uppercase mb-1">Accesorios</span>
+          <h3 class="text-xl font-bold text-gray-800 mb-2">Gafas Eclipse Black</h3>
+          <p class="text-gray-600 text-sm mb-4 flex-grow">Montura ligera con proteccion UV400 para un look sofisticado todo el año.</p>
+          <div class="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
+            <span class="text-2xl font-black text-amber-900">$49.00</span>
+            <button class="bg-amber-600 hover:bg-amber-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 text-sm">Añadir</button>
+          </div>
+        </div>
+      </article>
+
+      <article data-category="accesorios" class="catalog-item bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col">
+        <div class="relative pt-[75%] overflow-hidden bg-amber-50">
+          <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=600&q=80" alt="Cinturon de cuero marron" class="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+        </div>
+        <div class="p-5 flex flex-col flex-grow">
+          <span class="text-xs font-semibold tracking-wider text-amber-600 uppercase mb-1">Accesorios</span>
+          <h3 class="text-xl font-bold text-gray-800 mb-2">Cinturon Heritage</h3>
+          <p class="text-gray-600 text-sm mb-4 flex-grow">Cinturon de cuero genuino con hebilla mate para complementar outfits clasicos.</p>
+          <div class="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
+            <span class="text-2xl font-black text-amber-900">$36.00</span>
+            <button class="bg-amber-600 hover:bg-amber-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 text-sm">Añadir</button>
+          </div>
+        </div>
+      </article>
+
+      <article data-category="accesorios" class="catalog-item bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col">
+        <div class="relative pt-[75%] overflow-hidden bg-amber-50">
+          <img src="https://images.unsplash.com/photo-1521369909029-2afed882baee?auto=format&fit=crop&w=600&q=80" alt="Gorra negra bordada" class="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+        </div>
+        <div class="p-5 flex flex-col flex-grow">
+          <span class="text-xs font-semibold tracking-wider text-amber-600 uppercase mb-1">Accesorios</span>
+          <h3 class="text-xl font-bold text-gray-800 mb-2">Gorra Icon Monochrome</h3>
+          <p class="text-gray-600 text-sm mb-4 flex-grow">Gorra ajustable con bordado frontal y visera curva para estilo street premium.</p>
+          <div class="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
+            <span class="text-2xl font-black text-amber-900">$29.00</span>
+            <button class="bg-amber-600 hover:bg-amber-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 text-sm">Añadir</button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+  </main>
+
+  <site-footer></site-footer>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Ohlala Croisant Storefour",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "14 Rue de la Lune",
+      "addressLocality": "Paris",
+      "postalCode": "75002",
+      "addressCountry": "FR"
+    },
+    "telephone": "+33-1-00-00-00-00",
+    "servesCuisine": "French Bakery"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://ohlalacroisant.example/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Catalogo",
+        "item": "https://ohlalacroisant.example/catalogo.html"
+      }
+    ]
+  }
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      const catalogItems = document.querySelectorAll('.catalog-item');
+
+      if (!filterButtons.length || !catalogItems.length) return;
+
+      function setActiveButton(activeButton) {
+        filterButtons.forEach((button) => {
+          const isActive = button === activeButton;
+          button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+          button.classList.toggle('bg-amber-900', isActive);
+          button.classList.toggle('text-white', isActive);
+          button.classList.toggle('bg-white', !isActive);
+          button.classList.toggle('text-gray-700', !isActive);
+        });
+      }
+
+      function applyFilter(filter) {
+        catalogItems.forEach((item) => {
+          const category = item.getAttribute('data-category');
+          const showItem = filter === 'all' || category === filter;
+          item.classList.toggle('hidden', !showItem);
+        });
+      }
+
+      filterButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          const filter = button.getAttribute('data-filter');
+          setActiveButton(button);
+          applyFilter(filter);
+        });
+      });
+    });
+  </script>
+  <script defer src="app.js"></script>
+</body>
+</html>

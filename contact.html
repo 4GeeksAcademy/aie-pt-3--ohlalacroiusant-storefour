@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ohlala Croisant Storefour | Contacto</title>
+  <meta name="description" content="Contacto de Ohlala Croisant Storefour para pedidos especiales y consultas." />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script defer src="components/layout-components.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #fdf5e8;
+      --gold: #c08a43;
+      --wine: #7c1f30;
+      --ink: #18140f;
+      --paper: #fffaf0;
+      --leaf: #4e6f3d;
+    }
+
+    body {
+      font-family: "Manrope", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 20% 15%, rgba(192, 138, 67, 0.14), transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(124, 31, 48, 0.12), transparent 45%),
+        linear-gradient(160deg, #fffaf0 0%, #fef6e6 55%, #fff3dd 100%);
+      min-height: 100vh;
+    }
+
+    h1, h2, h3 {
+      font-family: "Cormorant Garamond", serif;
+      letter-spacing: 0.01em;
+    }
+  </style>
+</head>
+<body class="overflow-x-hidden">
+  <site-navbar></site-navbar>
+
+  <main class="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+    <section aria-labelledby="contact-form-title" class="rounded-[2rem] border border-amber-900/10 bg-white/70 p-6 shadow-[0_24px_80px_-48px_rgba(124,31,48,0.45)] backdrop-blur-sm sm:p-8">
+      <div class="grid gap-6 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.22em] text-[color:var(--wine)]">Atencion personalizada</p>
+          <h2 id="contact-form-title" class="mt-2 text-3xl text-amber-950">Contacto</h2>
+          <p class="mt-3 max-w-md text-sm leading-6 text-amber-900/75">Escribenos para pedidos especiales, colaboraciones o consultas sobre nuestras colecciones de temporada. Te responderemos con el mismo cuidado con el que horneamos cada pieza.</p>
+        </div>
+
+        <form class="grid gap-4 sm:grid-cols-2" action="#" method="post">
+          <fieldset class="sm:col-span-2 rounded-3xl border border-amber-900/15 bg-white/70 p-4 sm:p-5">
+            <legend class="px-2 text-sm font-semibold uppercase tracking-[0.14em] text-[color:var(--wine)]">Datos personales</legend>
+            <div class="mt-3 grid gap-4 sm:grid-cols-2">
+              <div>
+                <label for="contact-name" class="mb-2 block text-sm font-medium text-amber-950">Nombre</label>
+                <input id="contact-name" type="text" name="contact-name" required placeholder="Tu nombre" class="w-full rounded-2xl border border-amber-900/15 bg-[color:var(--paper)] px-4 py-3 text-sm text-amber-950 outline-none transition placeholder:text-amber-900/45 focus:border-[color:var(--wine)] focus:ring-2 focus:ring-[color:var(--wine)]/15" />
+              </div>
+              <div>
+                <label for="contact-lastname" class="mb-2 block text-sm font-medium text-amber-950">Apellido</label>
+                <input id="contact-lastname" type="text" name="contact-lastname" required placeholder="Tu apellido" class="w-full rounded-2xl border border-amber-900/15 bg-[color:var(--paper)] px-4 py-3 text-sm text-amber-950 outline-none transition placeholder:text-amber-900/45 focus:border-[color:var(--wine)] focus:ring-2 focus:ring-[color:var(--wine)]/15" />
+              </div>
+              <div>
+                <label for="contact-email" class="mb-2 block text-sm font-medium text-amber-950">Correo electronico</label>
+                <input id="contact-email" type="email" name="contact-email" required placeholder="tu@email.com" class="w-full rounded-2xl border border-amber-900/15 bg-[color:var(--paper)] px-4 py-3 text-sm text-amber-950 outline-none transition placeholder:text-amber-900/45 focus:border-[color:var(--wine)] focus:ring-2 focus:ring-[color:var(--wine)]/15" />
+              </div>
+              <div>
+                <label for="contact-phone" class="mb-2 block text-sm font-medium text-amber-950">Telefono</label>
+                <input id="contact-phone" type="tel" name="contact-phone" required placeholder="+34 600 000 000" class="w-full rounded-2xl border border-amber-900/15 bg-[color:var(--paper)] px-4 py-3 text-sm text-amber-950 outline-none transition placeholder:text-amber-900/45 focus:border-[color:var(--wine)] focus:ring-2 focus:ring-[color:var(--wine)]/15" />
+              </div>
+            </div>
+          </fieldset>
+          <div class="sm:col-span-2">
+            <label for="contact-message" class="mb-2 block text-sm font-medium text-amber-950">Mensaje</label>
+            <textarea id="contact-message" name="contact-message" rows="4" required placeholder="Cuentanos en que podemos ayudarte" class="w-full rounded-3xl border border-amber-900/15 bg-[color:var(--paper)] px-4 py-3 text-sm text-amber-950 outline-none transition placeholder:text-amber-900/45 focus:border-[color:var(--wine)] focus:ring-2 focus:ring-[color:var(--wine)]/15"></textarea>
+          </div>
+          <div class="sm:col-span-2 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <p class="text-sm text-amber-900/70">Pedidos privados, eventos y asesoramiento personalizado.</p>
+            <button type="submit" class="inline-flex items-center justify-center rounded-full bg-[color:var(--wine)] px-6 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-[#631727] focus:outline-none focus:ring-2 focus:ring-[color:var(--wine)] focus:ring-offset-2 focus:ring-offset-white">Enviar consulta</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <site-footer></site-footer>
+</body>
+</html>

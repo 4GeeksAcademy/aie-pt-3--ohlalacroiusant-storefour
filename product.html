@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta
+			name="description"
+			content="Vista de producto de Ohlala Croisant Storefour"
+		/>
+		<title>Vista de producto | Ohlala Croisant Storefour</title>
+		<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+		<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+		<script defer src="components/layout-components.js"></script>
+		<link rel="stylesheet" href="product.css" />
+		<style>
+			:root {
+				--cream: #fdf5e8;
+				--gold: #c08a43;
+				--wine: #7c1f30;
+				--paper: #fffaf0;
+			}
+		</style>
+	</head>
+	<body class="product-detail-page overflow-x-hidden">
+		<site-navbar></site-navbar>
+
+		<main class="product-detail-main">
+			<article class="product-detail-card" aria-labelledby="product-detail-name">
+				<section class="product-detail-media" aria-label="Imagen del producto">
+					<figure class="product-detail-figure">
+						<img
+							class="product-detail-image"
+							src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1200&q=80"
+							alt="Croissant artesanal de mantequilla sobre una superficie de madera"
+						/>
+						<figcaption class="product-detail-caption">Imagen referencial del producto.</figcaption>
+					</figure>
+				</section>
+
+				<section class="product-detail-info" aria-label="Información principal del producto">
+					<p class="product-detail-reference">Referencia: CR-001</p>
+					<h1 id="product-detail-name" class="product-detail-name">Croissant au Beurre Signature</h1>
+					<p class="product-detail-size">Talla: Unidad (110 g)</p>
+					<p class="product-detail-price" aria-label="Precio del producto">$4.900 COP</p>
+
+					<form class="product-detail-purchase" action="#" method="post">
+						<label class="product-detail-label" for="product-detail-quantity">Cantidad</label>
+						<input
+							class="product-detail-quantity"
+							id="product-detail-quantity"
+							name="quantity"
+							type="number"
+							min="1"
+							value="1"
+							inputmode="numeric"
+						/>
+
+						<button class="product-detail-add-to-cart" type="submit">Agregar al carrito</button>
+					</form>
+
+					<!-- Sección pendiente para Gonzalo Moreno: descripción detallada del producto -->
+				</section>
+			</article>
+		</main>
+
+		<site-footer></site-footer>
+	</body>
+</html>
