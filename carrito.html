@@ -99,8 +99,20 @@
           <p class="text-sm text-amber-900/80">Envio estandar calculado en checkout.</p>
         </div>
         <div class="text-left sm:text-right">
-          <p class="text-sm uppercase tracking-[0.15em] text-amber-900/75">Subtotal</p>
-          <p id="cart-subtotal" class="text-3xl font-bold text-[color:var(--wine)]">$0.00</p>
+          <dl class="space-y-2">
+            <div class="flex items-center justify-between gap-4 text-sm text-amber-900/85 sm:text-base">
+              <dt class="uppercase tracking-[0.12em]">Subtotal</dt>
+              <dd id="cart-subtotal" class="font-semibold">$0.00</dd>
+            </div>
+            <div class="flex items-center justify-between gap-4 text-sm text-amber-900/85 sm:text-base">
+              <dt class="uppercase tracking-[0.12em]">Impuestos (21%)</dt>
+              <dd id="cart-tax" class="font-semibold">$0.00</dd>
+            </div>
+            <div class="flex items-center justify-between gap-4 border-t border-amber-200 pt-2 text-base font-bold text-[color:var(--wine)] sm:text-xl">
+              <dt class="uppercase tracking-[0.12em]">Total</dt>
+              <dd id="cart-total">$0.00</dd>
+            </div>
+          </dl>
           <a href="#" class="mt-3 inline-flex rounded-full bg-[color:var(--wine)] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[#631826]">Finalizar compra</a>
         </div>
       </aside>
