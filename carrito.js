@@ -1,5 +1,34 @@
 (function () {
   const CART_KEY = "ohlala-cart";
+  const DEFAULT_CART_ITEMS = [
+    {
+      id: "sneakers-pulse-red",
+      name: "Sneakers Pulse Red",
+      category: "Calzado",
+      image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80",
+      alt: "Zapatillas urbanas rojas",
+      price: 79,
+      quantity: 1
+    },
+    {
+      id: "camisa-lino-blanc",
+      name: "Camisa Lino Blanc",
+      category: "Camisas",
+      image: "https://images.unsplash.com/photo-1603252109303-2751441dd157?auto=format&fit=crop&w=600&q=80",
+      alt: "Camisa blanca de lino",
+      price: 58,
+      quantity: 1
+    },
+    {
+      id: "chinos-sand-tailor",
+      name: "Chinos Sand Tailor",
+      category: "Pantalones",
+      image: "https://images.unsplash.com/photo-1473966968600-fa801b869a1a?auto=format&fit=crop&w=600&q=80",
+      alt: "Pantalones chinos beige",
+      price: 68,
+      quantity: 1
+    }
+  ];
 
   function getCartItems() {
     try {
@@ -24,6 +53,14 @@
   function saveCartItems(items) {
     localStorage.setItem(CART_KEY, JSON.stringify(items));
     updateBadge(items);
+  }
+
+  function ensureDefaultCartItems() {
+    const cartItems = getCartItems();
+    if (cartItems.length > 0) return;
+
+    // Clonamos para evitar mutaciones accidentales sobre la constante base.
+    saveCartItems(DEFAULT_CART_ITEMS.map((item) => ({ ...item })));
   }
 
   function extractProductFromCard(card) {
@@ -225,6 +262,7 @@
   }
 
   document.addEventListener("DOMContentLoaded", () => {
+    ensureDefaultCartItems();
     updateBadge();
     initCatalogPage();
     initCartPage();
@@ -235,6 +273,7 @@
     extractProductFromCard,
     getCartItems,
     getTotalItems,
+    ensureDefaultCartItems,
     saveCartItems,
     updateBadge
   };
