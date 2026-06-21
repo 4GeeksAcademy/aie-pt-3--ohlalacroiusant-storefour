@@ -7,6 +7,7 @@
   <meta name="description" content="Vista completa del carrito con prendas seleccionadas, cantidades y totales por producto." />
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script defer src="carrito.js"></script>
   <script defer src="components/layout-components.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -127,139 +128,6 @@
       }
     ]
   }
-  </script>
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const CART_KEY = "ohlala-cart";
-      const cartItemsContainer = document.getElementById("cart-items");
-      const emptyState = document.getElementById("cart-empty-state");
-      const subtotalEl = document.getElementById("cart-subtotal");
-
-      const formatCurrency = (value) => `$${value.toFixed(2)}`;
-      const parsePrice = (value) => Number(value) || 0;
-
-      function getCartItems() {
-        try {
-          const rawCart = localStorage.getItem(CART_KEY);
-          const parsedCart = rawCart ? JSON.parse(rawCart) : [];
-          return Array.isArray(parsedCart) ? parsedCart : [];
-        } catch {
-          return [];
-        }
-      }
-
-      function saveCartItems(items) {
-        localStorage.setItem(CART_KEY, JSON.stringify(items));
-      }
-
-      function updateBadge(items) {
-        const cartCountNode = document.querySelector("[data-cart-count]");
-        if (!cartCountNode) return;
-        const totalItems = items.reduce((acc, item) => acc + (Number(item.quantity) || 0), 0);
-        cartCountNode.textContent = String(totalItems);
-      }
-
-      function renderRow(item) {
-        const safeName = item.name || "Producto";
-        const safeCategory = item.category || "Categoria";
-        const safeAlt = item.alt || safeName;
-        const safeImage = item.image || "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=320&q=80";
-        const unitPrice = parsePrice(item.price);
-        const quantity = Math.max(1, Number(item.quantity) || 1);
-
-        return `
-          <article class="cart-row rounded-2xl border border-amber-100 bg-white px-4 py-4 shadow-sm sm:px-5" data-id="${item.id}" data-price="${unitPrice}">
-            <div class="flex items-center gap-4">
-              <img src="${safeImage}" alt="${safeAlt}" class="h-20 w-20 rounded-xl object-cover" loading="lazy" />
-              <div>
-                <h2 class="text-2xl text-amber-950">${safeName}</h2>
-                <p class="text-sm text-amber-900/80">${safeCategory}</p>
-              </div>
-            </div>
-            <p class="text-sm font-semibold text-amber-900 md:text-base"><span class="md:hidden">Precio unitario: </span>${formatCurrency(unitPrice)}</p>
-            <label class="flex items-center gap-2 text-sm text-amber-900/80">
-              <span class="md:hidden">Cantidad:</span>
-              <input type="number" min="1" value="${quantity}" class="cart-qty-input w-20 rounded-lg border border-amber-200 px-3 py-2 text-sm font-semibold text-amber-950" data-qty-input />
-              <button type="button" class="rounded-md px-2 py-1 text-xs font-semibold text-[color:var(--wine)] hover:bg-amber-100" data-remove-item>Quitar</button>
-            </label>
-            <p class="text-base font-bold text-[color:var(--wine)]" data-line-total><span class="md:hidden">Total: </span>${formatCurrency(unitPrice * quantity)}</p>
-          </article>
-        `;
-      }
-
-      function updateTotals() {
-        const rows = Array.from(document.querySelectorAll("[data-id][data-price]"));
-        let subtotal = 0;
-        const cartItems = getCartItems();
-
-        rows.forEach((row) => {
-          const productId = row.getAttribute("data-id");
-          const unitPrice = Number(row.getAttribute("data-price")) || 0;
-          const quantityInput = row.querySelector("[data-qty-input]");
-          const lineTotalEl = row.querySelector("[data-line-total]");
-          const product = cartItems.find((item) => item.id === productId);
-
-          if (!product || !quantityInput || !lineTotalEl) return;
-
-          let quantity = Number(quantityInput.value) || 1;
-          if (quantity < 1) {
-            quantity = 1;
-            quantityInput.value = "1";
-          }
-
-          product.quantity = quantity;
-
-          const total = unitPrice * quantity;
-          subtotal += total;
-
-          lineTotalEl.innerHTML = `<span class="md:hidden">Total: </span>${formatCurrency(total)}`;
-        });
-
-        saveCartItems(cartItems);
-        updateBadge(cartItems);
-        subtotalEl.textContent = formatCurrency(subtotal);
-      }
-
-      function bindCartEvents() {
-        const rows = Array.from(document.querySelectorAll("[data-id][data-price]"));
-        rows.forEach((row) => {
-          const quantityInput = row.querySelector("[data-qty-input]");
-          const removeButton = row.querySelector("[data-remove-item]");
-
-          if (quantityInput) {
-            quantityInput.addEventListener("input", updateTotals);
-          }
-
-          if (removeButton) {
-            removeButton.addEventListener("click", () => {
-              const productId = row.getAttribute("data-id");
-              const nextCart = getCartItems().filter((item) => item.id !== productId);
-              saveCartItems(nextCart);
-              renderCart();
-            });
-          }
-        });
-      }
-
-      function renderCart() {
-        const cartItems = getCartItems();
-
-        if (!cartItems.length) {
-          cartItemsContainer.innerHTML = "";
-          emptyState.classList.remove("hidden");
-          subtotalEl.textContent = "$0.00";
-          updateBadge([]);
-          return;
-        }
-
-        emptyState.classList.add("hidden");
-        cartItemsContainer.innerHTML = cartItems.map((item) => renderRow(item)).join("");
-        bindCartEvents();
-        updateTotals();
-      }
-
-      renderCart();
-    });
   </script>
 </body>
 </html>

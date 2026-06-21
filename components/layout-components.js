@@ -29,17 +29,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     Object.entries(componentMap).map(([tagName, path]) => loadComponent(tagName, path))
   );
 
-  const cartCountNode = document.querySelector("[data-cart-count]");
-  if (cartCountNode) {
-    try {
-      const rawCart = localStorage.getItem("ohlala-cart");
-      const parsedCart = rawCart ? JSON.parse(rawCart) : [];
-      const cartItems = Array.isArray(parsedCart) ? parsedCart : [];
-      const totalItems = cartItems.reduce((acc, item) => acc + (Number(item.quantity) || 0), 0);
-      cartCountNode.textContent = String(totalItems);
-    } catch {
-      cartCountNode.textContent = "0";
-    }
+  if (window.OhlalaCart && typeof window.OhlalaCart.updateBadge === "function") {
+    window.OhlalaCart.updateBadge();
   }
 
   if (window.Alpine && typeof window.Alpine.initTree === "function") {

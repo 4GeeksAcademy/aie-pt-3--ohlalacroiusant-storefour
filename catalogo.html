@@ -7,6 +7,7 @@
   <meta name="description" content="Catalogo de croissants y pasteleria artesanal de lujo." />
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script defer src="carrito.js"></script>
   <script defer src="components/layout-components.js"></script>
   
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -421,121 +422,6 @@
       }
     ]
   }
-  </script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const CART_KEY = 'ohlala-cart';
-      const filterButtons = document.querySelectorAll('.filter-btn');
-      const catalogItems = document.querySelectorAll('.catalog-item');
-
-      if (!filterButtons.length || !catalogItems.length) return;
-
-      function getCartItems() {
-        try {
-          const rawCart = localStorage.getItem(CART_KEY);
-          const parsedCart = rawCart ? JSON.parse(rawCart) : [];
-          return Array.isArray(parsedCart) ? parsedCart : [];
-        } catch {
-          return [];
-        }
-      }
-
-      function saveCartItems(items) {
-        localStorage.setItem(CART_KEY, JSON.stringify(items));
-      }
-
-      function updateCartBadge() {
-        const cartCountNode = document.querySelector('[data-cart-count]');
-        if (!cartCountNode) return;
-
-        const totalItems = getCartItems().reduce((acc, item) => acc + (Number(item.quantity) || 0), 0);
-        cartCountNode.textContent = String(totalItems);
-      }
-
-      function extractProductFromCard(card) {
-        const name = card.querySelector('h3')?.textContent?.trim() || 'Producto sin nombre';
-        const categoryLabel = card.querySelector('span')?.textContent?.trim() || 'Categoria';
-        const imageNode = card.querySelector('img');
-        const priceText = card.querySelector('.text-2xl')?.textContent?.trim() || '$0';
-        const price = Number(priceText.replace(/[^\d.]/g, '')) || 0;
-        const image = imageNode?.getAttribute('src') || '';
-        const alt = imageNode?.getAttribute('alt') || name;
-        const id = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
-
-        return {
-          id,
-          name,
-          category: categoryLabel,
-          image,
-          alt,
-          price,
-          quantity: 1
-        };
-      }
-
-      function addProductToCart(product) {
-        const cartItems = getCartItems();
-        const existingIndex = cartItems.findIndex((item) => item.id === product.id);
-
-        if (existingIndex >= 0) {
-          const currentQty = Number(cartItems[existingIndex].quantity) || 0;
-          cartItems[existingIndex].quantity = currentQty + 1;
-        } else {
-          cartItems.push(product);
-        }
-
-        saveCartItems(cartItems);
-        updateCartBadge();
-      }
-
-      function setActiveButton(activeButton) {
-        filterButtons.forEach((button) => {
-          const isActive = button === activeButton;
-          button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
-          button.classList.toggle('bg-amber-900', isActive);
-          button.classList.toggle('text-white', isActive);
-          button.classList.toggle('bg-white', !isActive);
-          button.classList.toggle('text-gray-700', !isActive);
-        });
-      }
-
-      function applyFilter(filter) {
-        catalogItems.forEach((item) => {
-          const category = item.getAttribute('data-category');
-          const showItem = filter === 'all' || category === filter;
-          item.classList.toggle('hidden', !showItem);
-        });
-      }
-
-      filterButtons.forEach((button) => {
-        button.addEventListener('click', () => {
-          const filter = button.getAttribute('data-filter');
-          setActiveButton(button);
-          applyFilter(filter);
-        });
-      });
-
-      catalogItems.forEach((item) => {
-        const addButton = item.querySelector('button');
-        if (!addButton) return;
-
-        addButton.addEventListener('click', () => {
-          const product = extractProductFromCard(item);
-          addProductToCart(product);
-
-          const originalText = addButton.textContent;
-          addButton.textContent = 'Agregado';
-          addButton.classList.add('bg-amber-800');
-
-          setTimeout(() => {
-            addButton.textContent = originalText;
-            addButton.classList.remove('bg-amber-800');
-          }, 700);
-        });
-      });
-
-      updateCartBadge();
-    });
   </script>
   <script defer src="app.js"></script>
 </body>
