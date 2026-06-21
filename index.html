@@ -1,5 +1,166 @@
 <!doctype html>
 <html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout | Maison Atelier</title>
+    <meta
+      name="description"
+      content="Formulario de checkout en 3 pasos para tienda online: datos personales, direccion de entrega y pago con tarjeta."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Manrope:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="checkout-shell">
+      <section class="checkout-card" aria-labelledby="checkout-title">
+        <header class="checkout-header">
+          <p class="eyebrow">Tienda Online</p>
+          <h1 id="checkout-title">Formulario de pago</h1>
+          <p class="subtitle">Completa los pasos para finalizar tu compra.</p>
+        </header>
+
+        <ol class="stepper" aria-label="Progreso del checkout">
+          <li class="step is-active" data-step="1">
+            <span class="step-index">1</span>
+            <span class="step-label">Datos personales</span>
+          </li>
+          <li class="step" data-step="2">
+            <span class="step-index">2</span>
+            <span class="step-label">Direccion de entrega</span>
+          </li>
+          <li class="step" data-step="3">
+            <span class="step-index">3</span>
+            <span class="step-label">Pago con tarjeta</span>
+          </li>
+        </ol>
+
+        <form id="checkout-form" novalidate>
+          <section class="form-step is-active" data-step="1" aria-labelledby="step-title-1">
+            <h2 id="step-title-1">1. Datos personales</h2>
+            <div class="placeholder-block" role="note" aria-label="Bloque pendiente por desarrollar">
+              <p>Este bloque se deja intencionalmente vacio.</p>
+              <p>
+                La implementacion de datos personales sera realizada por otro
+                desarrollador.
+              </p>
+            </div>
+          </section>
+
+          <section class="form-step" data-step="2" aria-labelledby="step-title-2">
+            <h2 id="step-title-2">2. Direccion de entrega</h2>
+            <div class="grid">
+              <label>
+                Nombre completo
+                <input type="text" name="fullName" required autocomplete="name" />
+              </label>
+              <label>
+                Telefono
+                <input type="tel" name="phone" required autocomplete="tel" />
+              </label>
+              <label class="full-row">
+                Calle y numero
+                <input
+                  type="text"
+                  name="street"
+                  required
+                  autocomplete="address-line1"
+                />
+              </label>
+              <label>
+                Ciudad
+                <input
+                  type="text"
+                  name="city"
+                  required
+                  autocomplete="address-level2"
+                />
+              </label>
+              <label>
+                Codigo postal
+                <input
+                  type="text"
+                  name="zip"
+                  inputmode="numeric"
+                  pattern="[0-9]{4,10}"
+                  required
+                  autocomplete="postal-code"
+                />
+              </label>
+              <label>
+                Pais
+                <input type="text" name="country" required autocomplete="country-name" />
+              </label>
+              <label>
+                Provincia/Region
+                <input type="text" name="region" required autocomplete="address-level1" />
+              </label>
+            </div>
+          </section>
+
+          <section class="form-step" data-step="3" aria-labelledby="step-title-3">
+            <h2 id="step-title-3">3. Pago con tarjeta</h2>
+            <div class="grid">
+              <label class="full-row">
+                Titular de la tarjeta
+                <input type="text" name="cardHolder" required autocomplete="cc-name" />
+              </label>
+              <label class="full-row">
+                Numero de tarjeta
+                <input
+                  type="text"
+                  name="cardNumber"
+                  required
+                  inputmode="numeric"
+                  autocomplete="cc-number"
+                  placeholder="1234 5678 9012 3456"
+                  maxlength="19"
+                />
+              </label>
+              <label>
+                Fecha de expiracion
+                <input
+                  type="text"
+                  name="cardExpiry"
+                  required
+                  autocomplete="cc-exp"
+                  placeholder="MM/AA"
+                  maxlength="5"
+                />
+              </label>
+              <label>
+                CVV
+                <input
+                  type="password"
+                  name="cardCvv"
+                  required
+                  inputmode="numeric"
+                  autocomplete="cc-csc"
+                  maxlength="4"
+                  placeholder="123"
+                />
+              </label>
+            </div>
+          </section>
+
+          <p id="form-feedback" aria-live="polite" class="feedback"></p>
+
+          <footer class="actions">
+            <button type="button" id="prev-btn" class="btn btn-secondary">Anterior</button>
+            <button type="button" id="next-btn" class="btn btn-primary">Siguiente</button>
+            <button type="submit" id="submit-btn" class="btn btn-primary">Confirmar pago</button>
+          </footer>
+        </form>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,6 +168,7 @@
   <meta name="description" content="Pasteleria artesanal de lujo con croissants unicos y una experiencia elegante." />
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script defer src="carrito.js"></script>
   <script defer src="components/layout-components.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
