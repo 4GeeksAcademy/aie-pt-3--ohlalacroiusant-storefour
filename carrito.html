@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ohlala Croisant Storefour | Carrito</title>
+  <meta name="description" content="Vista completa del carrito con prendas seleccionadas, cantidades y totales por producto." />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script defer src="components/layout-components.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #fdf5e8;
+      --gold: #c08a43;
+      --wine: #7c1f30;
+      --ink: #18140f;
+      --paper: #fffaf0;
+    }
+
+    body {
+      font-family: "Manrope", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 16% 10%, rgba(192, 138, 67, 0.15), transparent 42%),
+        radial-gradient(circle at 85% 82%, rgba(124, 31, 48, 0.14), transparent 46%),
+        linear-gradient(165deg, #fffaf0 0%, #fff2df 55%, #ffeacf 100%);
+      min-height: 100vh;
+    }
+
+    h1, h2, h3 {
+      font-family: "Cormorant Garamond", serif;
+      letter-spacing: 0.01em;
+    }
+
+    .cart-row {
+      display: grid;
+      grid-template-columns: minmax(220px, 1.8fr) minmax(120px, 0.7fr) minmax(130px, 0.8fr) minmax(120px, 0.7fr);
+      gap: 1rem;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .cart-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .cart-qty-input:focus {
+      outline: 2px solid rgba(124, 31, 48, 0.35);
+      outline-offset: 2px;
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Ohlala Croisant Storefour",
+    "url": "https://ohlalacroisant.example"
+  }
+  </script>
+</head>
+<body class="overflow-x-hidden">
+  <site-navbar></site-navbar>
+
+  <main class="mx-auto w-[min(1180px,calc(100%-1.5rem))] py-8 sm:py-10 lg:py-12">
+    <section class="rounded-3xl border border-amber-200/70 bg-white/75 p-6 shadow-[0_24px_55px_rgba(80,45,12,0.13)] backdrop-blur-sm sm:p-8">
+      <header class="mb-7 border-b border-amber-100 pb-5">
+        <p class="text-xs font-semibold uppercase tracking-[0.24em] text-[color:var(--wine)]">Pedido actual</p>
+        <h1 class="mt-2 text-4xl text-amber-950 sm:text-5xl">Carrito completo</h1>
+        <p class="mt-2 max-w-3xl text-sm text-amber-900/80 sm:text-base">
+          Revisa tus prendas seleccionadas antes de continuar. Esta vista incluye miniatura, precio unitario,
+          cantidad editable y total por producto.
+        </p>
+      </header>
+
+      <section aria-label="Listado de productos en el carrito" class="space-y-4">
+        <div class="hidden cart-row rounded-xl bg-amber-50/80 px-5 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-amber-900/80 md:grid">
+          <p>Producto</p>
+          <p>Precio unitario</p>
+          <p>Cantidad</p>
+          <p>Total</p>
+        </div>
+        <div id="cart-items" class="space-y-4"></div>
+
+        <article id="cart-empty-state" class="hidden rounded-2xl border border-amber-100 bg-white p-8 text-center shadow-sm">
+          <h2 class="text-3xl text-amber-950">Tu carrito esta vacio</h2>
+          <p class="mt-2 text-sm text-amber-900/80">Aun no has agregado prendas. Explora el catalogo y añade tus favoritas.</p>
+          <a href="catalogo.html" class="mt-4 inline-flex rounded-full bg-[color:var(--wine)] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[#631826]">Ir al catalogo</a>
+        </article>
+      </section>
+
+      <aside class="mt-7 grid gap-4 rounded-2xl border border-amber-100 bg-amber-50/70 p-5 sm:grid-cols-2 sm:items-center">
+        <div>
+          <h2 class="text-3xl text-amber-950">Resumen del pedido</h2>
+          <p class="text-sm text-amber-900/80">Envio estandar calculado en checkout.</p>
+        </div>
+        <div class="text-left sm:text-right">
+          <p class="text-sm uppercase tracking-[0.15em] text-amber-900/75">Subtotal</p>
+          <p id="cart-subtotal" class="text-3xl font-bold text-[color:var(--wine)]">$0.00</p>
+          <a href="#" class="mt-3 inline-flex rounded-full bg-[color:var(--wine)] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[#631826]">Finalizar compra</a>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <site-footer></site-footer>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://ohlalacroisant.example/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Carrito",
+        "item": "https://ohlalacroisant.example/carrito.html"
+      }
+    ]
+  }
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const CART_KEY = "ohlala-cart";
+      const cartItemsContainer = document.getElementById("cart-items");
+      const emptyState = document.getElementById("cart-empty-state");
+      const subtotalEl = document.getElementById("cart-subtotal");
+
+      const formatCurrency = (value) => `$${value.toFixed(2)}`;
+      const parsePrice = (value) => Number(value) || 0;
+
+      function getCartItems() {
+        try {
+          const rawCart = localStorage.getItem(CART_KEY);
+          const parsedCart = rawCart ? JSON.parse(rawCart) : [];
+          return Array.isArray(parsedCart) ? parsedCart : [];
+        } catch {
+          return [];
+        }
+      }
+
+      function saveCartItems(items) {
+        localStorage.setItem(CART_KEY, JSON.stringify(items));
+      }
+
+      function updateBadge(items) {
+        const cartCountNode = document.querySelector("[data-cart-count]");
+        if (!cartCountNode) return;
+        const totalItems = items.reduce((acc, item) => acc + (Number(item.quantity) || 0), 0);
+        cartCountNode.textContent = String(totalItems);
+      }
+
+      function renderRow(item) {
+        const safeName = item.name || "Producto";
+        const safeCategory = item.category || "Categoria";
+        const safeAlt = item.alt || safeName;
+        const safeImage = item.image || "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=320&q=80";
+        const unitPrice = parsePrice(item.price);
+        const quantity = Math.max(1, Number(item.quantity) || 1);
+
+        return `
+          <article class="cart-row rounded-2xl border border-amber-100 bg-white px-4 py-4 shadow-sm sm:px-5" data-id="${item.id}" data-price="${unitPrice}">
+            <div class="flex items-center gap-4">
+              <img src="${safeImage}" alt="${safeAlt}" class="h-20 w-20 rounded-xl object-cover" loading="lazy" />
+              <div>
+                <h2 class="text-2xl text-amber-950">${safeName}</h2>
+                <p class="text-sm text-amber-900/80">${safeCategory}</p>
+              </div>
+            </div>
+            <p class="text-sm font-semibold text-amber-900 md:text-base"><span class="md:hidden">Precio unitario: </span>${formatCurrency(unitPrice)}</p>
+            <label class="flex items-center gap-2 text-sm text-amber-900/80">
+              <span class="md:hidden">Cantidad:</span>
+              <input type="number" min="1" value="${quantity}" class="cart-qty-input w-20 rounded-lg border border-amber-200 px-3 py-2 text-sm font-semibold text-amber-950" data-qty-input />
+              <button type="button" class="rounded-md px-2 py-1 text-xs font-semibold text-[color:var(--wine)] hover:bg-amber-100" data-remove-item>Quitar</button>
+            </label>
+            <p class="text-base font-bold text-[color:var(--wine)]" data-line-total><span class="md:hidden">Total: </span>${formatCurrency(unitPrice * quantity)}</p>
+          </article>
+        `;
+      }
+
+      function updateTotals() {
+        const rows = Array.from(document.querySelectorAll("[data-id][data-price]"));
+        let subtotal = 0;
+        const cartItems = getCartItems();
+
+        rows.forEach((row) => {
+          const productId = row.getAttribute("data-id");
+          const unitPrice = Number(row.getAttribute("data-price")) || 0;
+          const quantityInput = row.querySelector("[data-qty-input]");
+          const lineTotalEl = row.querySelector("[data-line-total]");
+          const product = cartItems.find((item) => item.id === productId);
+
+          if (!product || !quantityInput || !lineTotalEl) return;
+
+          let quantity = Number(quantityInput.value) || 1;
+          if (quantity < 1) {
+            quantity = 1;
+            quantityInput.value = "1";
+          }
+
+          product.quantity = quantity;
+
+          const total = unitPrice * quantity;
+          subtotal += total;
+
+          lineTotalEl.innerHTML = `<span class="md:hidden">Total: </span>${formatCurrency(total)}`;
+        });
+
+        saveCartItems(cartItems);
+        updateBadge(cartItems);
+        subtotalEl.textContent = formatCurrency(subtotal);
+      }
+
+      function bindCartEvents() {
+        const rows = Array.from(document.querySelectorAll("[data-id][data-price]"));
+        rows.forEach((row) => {
+          const quantityInput = row.querySelector("[data-qty-input]");
+          const removeButton = row.querySelector("[data-remove-item]");
+
+          if (quantityInput) {
+            quantityInput.addEventListener("input", updateTotals);
+          }
+
+          if (removeButton) {
+            removeButton.addEventListener("click", () => {
+              const productId = row.getAttribute("data-id");
+              const nextCart = getCartItems().filter((item) => item.id !== productId);
+              saveCartItems(nextCart);
+              renderCart();
+            });
+          }
+        });
+      }
+
+      function renderCart() {
+        const cartItems = getCartItems();
+
+        if (!cartItems.length) {
+          cartItemsContainer.innerHTML = "";
+          emptyState.classList.remove("hidden");
+          subtotalEl.textContent = "$0.00";
+          updateBadge([]);
+          return;
+        }
+
+        emptyState.classList.add("hidden");
+        cartItemsContainer.innerHTML = cartItems.map((item) => renderRow(item)).join("");
+        bindCartEvents();
+        updateTotals();
+      }
+
+      renderCart();
+    });
+  </script>
+</body>
+</html>
