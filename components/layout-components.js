@@ -29,6 +29,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     Object.entries(componentMap).map(([tagName, path]) => loadComponent(tagName, path))
   );
 
+  if (window.OhlalaCart && typeof window.OhlalaCart.updateBadge === "function") {
+    window.OhlalaCart.updateBadge();
+  }
+
   if (window.Alpine && typeof window.Alpine.initTree === "function") {
     window.Alpine.initTree(document.body);
   }

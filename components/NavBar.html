@@ -48,9 +48,9 @@
           </svg>
         </button>
       </form>
-      <button class="rounded-full bg-[color:var(--wine)] px-3 py-2 text-xs font-semibold uppercase tracking-widest text-white shadow-sm transition hover:bg-[#631727] sm:text-sm" aria-label="Abrir carrito">
-        Carrito (0)
-      </button>
+      <a href="carrito.html" class="rounded-full bg-[color:var(--wine)] px-3 py-2 text-xs font-semibold uppercase tracking-widest text-white shadow-sm transition hover:bg-[#631727] sm:text-sm" aria-label="Ir al carrito completo">
+        Carrito (<span data-cart-count>0</span>)
+      </a>
 
       <div x-data="{ open: false }" class="relative">
         <button id="user-menu-button" @click="open = !open" class="rounded-full p-2 text-amber-950 transition hover:text-[color:var(--wine)] hover:bg-amber-100/50" aria-label="Abrir menu de usuario" aria-haspopup="true" :aria-expanded="open">
