@@ -52,6 +52,28 @@
       animation-delay: 0.24s;
     }
 
+    .card-rise:nth-child(4) {
+      animation-delay: 0.36s;
+    }
+
+    .product-row {
+      scrollbar-width: thin;
+      scrollbar-color: rgba(124, 31, 48, 0.45) transparent;
+    }
+
+    .product-row::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .product-row::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .product-row::-webkit-scrollbar-thumb {
+      background: rgba(124, 31, 48, 0.35);
+      border-radius: 999px;
+    }
+
     @keyframes hero-fade {
       from {
         opacity: 0;
@@ -92,6 +114,117 @@
   <site-navbar></site-navbar>
 
   <main>
+    <section class="hero-fade mx-auto mt-6 w-[min(1180px,calc(100%-1.5rem))] rounded-3xl border border-amber-200/70 bg-gradient-to-br from-[#fff8ec] via-[#fff3de] to-[#fbead2] p-6 shadow-[0_24px_55px_rgba(80,45,12,0.15)] sm:p-8 lg:mt-10 lg:grid lg:grid-cols-[1.1fr_1fr] lg:items-center lg:gap-8 lg:p-10">
+      <article class="space-y-5">
+        <p class="inline-flex items-center rounded-full border border-amber-300/80 bg-white/70 px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-[#7c1f30]">
+          Campana Signature Ete 2026
+        </p>
+        <h1 class="text-4xl leading-tight text-[#2e1d11] sm:text-5xl lg:text-6xl">
+          Edicion limitada de croissants dorados para celebrar Paris en verano.
+        </h1>
+        <p class="max-w-xl text-sm leading-relaxed text-[#4f4136] sm:text-base">
+          Descubre nuestra seleccion especial con mantequilla AOP, rellenos de temporada y acabados artesanales.
+          Solo disponible por tiempo limitado en Ohlala Croisant Storefour.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <a href="catalogo.html" class="rounded-full bg-[#7c1f30] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#631826]">Comprar coleccion</a>
+          <a href="product.html" class="rounded-full border border-[#7c1f30] bg-white/90 px-6 py-3 text-sm font-semibold text-[#7c1f30] transition hover:bg-[#fbe7dd]">Ver producto estrella</a>
+        </div>
+      </article>
+
+      <figure class="mt-8 overflow-hidden rounded-2xl border border-amber-100 bg-white/75 shadow-[0_16px_38px_rgba(124,31,48,0.2)] lg:mt-0">
+        <img
+          src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1200&q=80"
+          alt="Croissants artesanales dorados en bandeja de marmol"
+          class="h-72 w-full object-cover object-center sm:h-80"
+          loading="lazy"
+        />
+        <figcaption class="flex items-center justify-between gap-4 border-t border-amber-100 px-4 py-3 text-sm text-[#5b4a3d] sm:px-5">
+          <span>Selecciones especiales de temporada</span>
+          <span class="font-semibold text-[#7c1f30]">Desde EUR 5.90</span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <section class="mx-auto mt-10 w-[min(1180px,calc(100%-1.5rem))]">
+      <div class="mb-4 flex items-end justify-between gap-3">
+        <div>
+          <h2 class="text-3xl text-[#2e1d11] sm:text-4xl">Nuevos lanzamientos</h2>
+          <p class="mt-1 text-sm text-[#5b4a3d]">Piezas recien horneadas para quienes buscan nuevas experiencias.</p>
+        </div>
+        <a href="catalogo.html" class="shrink-0 rounded-full border border-[#c08a43] px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-[#7c1f30] transition hover:bg-[#fff0df]">Ver todo</a>
+      </div>
+
+      <div class="product-row -mx-1 flex snap-x snap-mandatory gap-4 overflow-x-auto px-1 pb-4">
+        <article class="card-rise min-w-[230px] snap-start rounded-2xl border border-[#ecd9bf] bg-white/85 p-4 shadow-[0_10px_24px_rgba(77,49,24,0.12)] sm:min-w-[250px]">
+          <img src="https://vandemoortele.getbynder.com/transform/3b679aea-bfde-45e9-9a2e-972dad88d2cb/56589-Croissant-con-relleno-de-pistacho?io=transform:scale,height:800" alt="Croissant relleno de pistacho y vainilla" class="h-36 w-full rounded-xl object-cover" loading="lazy" />
+          <h3 class="mt-3 text-2xl text-[#302015]">Croissant Pistache Royale</h3>
+          <p class="mt-1 text-sm text-[#635344]">Pistacho siciliano, crema de vainilla y glas dorado.</p>
+          <p class="mt-2 text-sm font-semibold text-[#7c1f30]">EUR 6.50</p>
+        </article>
+
+        <article class="card-rise min-w-[230px] snap-start rounded-2xl border border-[#ecd9bf] bg-white/85 p-4 shadow-[0_10px_24px_rgba(77,49,24,0.12)] sm:min-w-[250px]">
+          <img src="https://images.unsplash.com/photo-1541783245831-57d6fb0926d3?auto=format&fit=crop&w=800&q=80" alt="Croissant cubierto con frambuesas frescas" class="h-36 w-full rounded-xl object-cover" loading="lazy" />
+          <h3 class="mt-3 text-2xl text-[#302015]">Framboise Velours</h3>
+          <p class="mt-1 text-sm text-[#635344]">Masa laminada con coulis de frambuesa y crema suave.</p>
+          <p class="mt-2 text-sm font-semibold text-[#7c1f30]">EUR 6.90</p>
+        </article>
+
+        <article class="card-rise min-w-[230px] snap-start rounded-2xl border border-[#ecd9bf] bg-white/85 p-4 shadow-[0_10px_24px_rgba(77,49,24,0.12)] sm:min-w-[250px]">
+          <img src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?auto=format&fit=crop&w=800&q=80" alt="Croissant con cobertura de chocolate oscuro" class="h-36 w-full rounded-xl object-cover" loading="lazy" />
+          <h3 class="mt-3 text-2xl text-[#302015]">Noir de Minuit</h3>
+          <p class="mt-1 text-sm text-[#635344]">Ganache de cacao 70% y notas de naranja confitada.</p>
+          <p class="mt-2 text-sm font-semibold text-[#7c1f30]">EUR 7.20</p>
+        </article>
+
+        <article class="card-rise min-w-[230px] snap-start rounded-2xl border border-[#ecd9bf] bg-white/85 p-4 shadow-[0_10px_24px_rgba(77,49,24,0.12)] sm:min-w-[250px]">
+          <img src="https://images.unsplash.com/photo-1519915028121-7d3463d20b13?auto=format&fit=crop&w=800&q=80" alt="Croissant relleno de crema de limon" class="h-36 w-full rounded-xl object-cover" loading="lazy" />
+          <h3 class="mt-3 text-2xl text-[#302015]">Citron Lumiere</h3>
+          <p class="mt-1 text-sm text-[#635344]">Crema de limon de Menton y azucar crujiente.</p>
+          <p class="mt-2 text-sm font-semibold text-[#7c1f30]">EUR 6.30</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="mx-auto mb-12 mt-10 w-[min(1180px,calc(100%-1.5rem))]">
+      <div class="mb-4 flex items-end justify-between gap-3">
+        <div>
+          <h2 class="text-3xl text-[#2e1d11] sm:text-4xl">Mas vendidos</h2>
+          <p class="mt-1 text-sm text-[#5b4a3d]">Favoritos de la maison elegidos por nuestros clientes cada semana.</p>
+        </div>
+        <a href="catalogo.html" class="shrink-0 rounded-full border border-[#c08a43] px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-[#7c1f30] transition hover:bg-[#fff0df]">Explorar</a>
+      </div>
+
+      <div class="product-row -mx-1 flex snap-x snap-mandatory gap-4 overflow-x-auto px-1 pb-4">
+        <article class="card-rise min-w-[230px] snap-start rounded-2xl border border-[#ecd9bf] bg-white/85 p-4 shadow-[0_10px_24px_rgba(77,49,24,0.12)] sm:min-w-[250px]">
+          <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80" alt="Croissant clasico de mantequilla francesa" class="h-36 w-full rounded-xl object-cover" loading="lazy" />
+          <h3 class="mt-3 text-2xl text-[#302015]">Beurre Classique</h3>
+          <p class="mt-1 text-sm text-[#635344]">Iconico croissant de mantequilla AOP, laminado 48 horas.</p>
+          <p class="mt-2 text-sm font-semibold text-[#7c1f30]">EUR 5.90</p>
+        </article>
+
+        <article class="card-rise min-w-[230px] snap-start rounded-2xl border border-[#ecd9bf] bg-white/85 p-4 shadow-[0_10px_24px_rgba(77,49,24,0.12)] sm:min-w-[250px]">
+          <img src="https://images.unsplash.com/photo-1483695028939-5bb13f8648b0?auto=format&fit=crop&w=800&q=80" alt="Croissant de almendra tostada" class="h-36 w-full rounded-xl object-cover" loading="lazy" />
+          <h3 class="mt-3 text-2xl text-[#302015]">Amande Prestige</h3>
+          <p class="mt-1 text-sm text-[#635344]">Relleno de frangipane, almendra tostada y glacee ligera.</p>
+          <p class="mt-2 text-sm font-semibold text-[#7c1f30]">EUR 6.70</p>
+        </article>
+
+        <article class="card-rise min-w-[230px] snap-start rounded-2xl border border-[#ecd9bf] bg-white/85 p-4 shadow-[0_10px_24px_rgba(77,49,24,0.12)] sm:min-w-[250px]">
+          <img src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?auto=format&fit=crop&w=800&q=80" alt="Pain au chocolat artesanal" class="h-36 w-full rounded-xl object-cover" loading="lazy" />
+          <h3 class="mt-3 text-2xl text-[#302015]">Pain au Chocolat Grand Cru</h3>
+          <p class="mt-1 text-sm text-[#635344]">Chocolate grand cru de Madagascar con masa ultraligera.</p>
+          <p class="mt-2 text-sm font-semibold text-[#7c1f30]">EUR 6.40</p>
+        </article>
+
+        <article class="card-rise min-w-[230px] snap-start rounded-2xl border border-[#ecd9bf] bg-white/85 p-4 shadow-[0_10px_24px_rgba(77,49,24,0.12)] sm:min-w-[250px]">
+          <img src="https://images.unsplash.com/photo-1599785209707-a456fc1337bb?auto=format&fit=crop&w=800&q=80" alt="Croissant relleno de caramelo salado" class="h-36 w-full rounded-xl object-cover" loading="lazy" />
+          <h3 class="mt-3 text-2xl text-[#302015]">Caramel Fleur de Sel</h3>
+          <p class="mt-1 text-sm text-[#635344]">Caramelo mantecoso con toque de sal marina de Guerande.</p>
+          <p class="mt-2 text-sm font-semibold text-[#7c1f30]">EUR 6.80</p>
+        </article>
+      </div>
+    </section>
   </main>
 
   <site-footer></site-footer>
