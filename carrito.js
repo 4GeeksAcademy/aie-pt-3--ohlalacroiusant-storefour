@@ -154,8 +154,11 @@
     const cartItemsContainer = document.getElementById("cart-items");
     const emptyState = document.getElementById("cart-empty-state");
     const subtotalEl = document.getElementById("cart-subtotal");
+    const taxEl = document.getElementById("cart-tax");
+    const totalEl = document.getElementById("cart-total");
+    const TAX_RATE = 0.21;
 
-    if (!cartItemsContainer || !emptyState || !subtotalEl) return;
+    if (!cartItemsContainer || !emptyState || !subtotalEl || !taxEl || !totalEl) return;
 
     const formatCurrency = (value) => `$${value.toFixed(2)}`;
     const parsePrice = (value) => Number(value) || 0;
@@ -218,6 +221,10 @@
 
       saveCartItems(cartItems);
       subtotalEl.textContent = formatCurrency(subtotal);
+      const tax = subtotal * TAX_RATE;
+      const grandTotal = subtotal + tax;
+      taxEl.textContent = formatCurrency(tax);
+      totalEl.textContent = formatCurrency(grandTotal);
     }
 
     function bindCartEvents() {
@@ -248,6 +255,8 @@
         cartItemsContainer.innerHTML = "";
         emptyState.classList.remove("hidden");
         subtotalEl.textContent = "$0.00";
+        taxEl.textContent = "$0.00";
+        totalEl.textContent = "$0.00";
         updateBadge([]);
         return;
       }
