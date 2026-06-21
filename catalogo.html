@@ -423,6 +423,236 @@
     ]
   }
   </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      const catalogItems = document.querySelectorAll('.catalog-item');
+
+      const productDetails = {
+        'Sneakers Pulse Red': {
+          materials: 'Piel sintetica de microfibra, malla transpirable y suela de goma EVA.',
+          usage: 'Ideal para trayectos urbanos, jornadas activas y planes casuales de fin de semana.'
+        },
+        'Tenis Minimal White': {
+          materials: 'Parte superior de cuero sintetico liso, forro textil y suela de caucho flexible.',
+          usage: 'Recomendados para oficina creativa, viajes ligeros y estilismos smart casual.'
+        },
+        'Mocasines Noir Classic': {
+          materials: 'Cuero pulido, plantilla acolchada y suela antideslizante de goma.',
+          usage: 'Apropiados para reuniones, cenas formales y eventos de etiqueta relajada.'
+        },
+        'Tacones Nude Élégant': {
+          materials: 'Acabado satinado, plantilla de espuma de alta densidad y suela sintetica fina.',
+          usage: 'Pensados para celebraciones, cocteles y ceremonias con dress code elegante.'
+        },
+        'Botas Heritage Brown': {
+          materials: 'Cuero tratado, forro textil reforzado y suela dentada de caucho.',
+          usage: 'Optimas para clima fresco, escapadas de ciudad y looks de entretiempo.'
+        },
+        'Camisa Lino Blanc': {
+          materials: 'Lino peinado y botones de resina con costuras de refuerzo.',
+          usage: 'Perfecta para dias calidos, brunchs al aire libre y vacaciones de verano.'
+        },
+        'Camisa Denim Atlas': {
+          materials: 'Denim liviano de algodon, botonadura frontal y cuello estructurado.',
+          usage: 'Recomendada para oficina informal, capas de otoño y estilismos diarios.'
+        },
+        'Sobrecamisa Sable': {
+          materials: 'Sarga suave de algodon, interior cepillado y botones de presion.',
+          usage: 'Ideal para entretiempo, uso por capas y desplazamientos urbanos.'
+        },
+        'Oxford Sky Fit': {
+          materials: 'Tejido oxford de algodon, cuello semi-rigido y punos reforzados.',
+          usage: 'Adecuada para entorno profesional, reuniones y cenas de negocio.'
+        },
+        'Camisa Satin Night': {
+          materials: 'Saten de poliester premium con tacto sedoso y acabado de brillo discreto.',
+          usage: 'Indicada para noche, eventos especiales y salidas con enfoque sofisticado.'
+        },
+        'Chinos Sand Tailor': {
+          materials: 'Algodon elastico con mezcla de elastano y bolsillos internos reforzados.',
+          usage: 'Excelente para oficina hibrida, viajes de trabajo y uso diario pulido.'
+        },
+        'Jean Indigo Straight': {
+          materials: 'Denim de algodon de peso medio y costuras dobles de alta resistencia.',
+          usage: 'Versatil para rutina semanal, encuentros informales y estilismo minimalista.'
+        },
+        'Cargo Urban Olive': {
+          materials: 'Sarga resistente de algodon, paneles utilitarios y cierres de boton metalico.',
+          usage: 'Recomendado para jornadas activas, escapadas de fin de semana y looks street.'
+        },
+        'Palazzo Noir Flow': {
+          materials: 'Tejido fluido de viscosa, cintura estructurada y forro ligero.',
+          usage: 'Ideal para eventos semiformales, cenas y contextos casual chic.'
+        },
+        'Jogger Motion Grey': {
+          materials: 'Algodon suave con mezcla tecnica, cintura elastica y punos acanalados.',
+          usage: 'Pensado para viajes, teletrabajo y actividades de baja intensidad.'
+        },
+        'Bolso Camel Luxe': {
+          materials: 'Cuero tratado, forro textil premium y herrajes metalicos anticorrosion.',
+          usage: 'Apto para oficina, reuniones y uso diario con capacidad organizada.'
+        },
+        'Reloj Silver Chrono': {
+          materials: 'Caja y brazalete de acero inoxidable con cristal mineral resistente.',
+          usage: 'Recomendado para trabajo formal, compromisos sociales y uso cotidiano.'
+        },
+        'Gafas Eclipse Black': {
+          materials: 'Montura de acetato ligero y lentes con filtro UV400.',
+          usage: 'Indicadas para exposicion solar urbana, viajes y conduccion diurna.'
+        },
+        'Cinturon Heritage': {
+          materials: 'Cuero genuino curtido y hebilla de aleacion con acabado mate.',
+          usage: 'Funciona en atuendos de oficina, conjuntos formales y looks clasicos.'
+        },
+        'Gorra Icon Monochrome': {
+          materials: 'Sarga de algodon, banda interior absorbente y cierre ajustable posterior.',
+          usage: 'Ideal para uso diario, actividades al aire libre y estilismo streetwear.'
+        }
+      };
+
+      if (!filterButtons.length || !catalogItems.length) return;
+
+      function enhanceSchema(item, productName) {
+        const image = item.querySelector('img');
+        const category = item.querySelector('span');
+        const title = item.querySelector('h3');
+        const description = item.querySelector('p');
+        const price = item.querySelector('.text-2xl.font-black');
+        const priceRow = item.querySelector('.flex.items-center.justify-between');
+
+        item.setAttribute('itemscope', '');
+        item.setAttribute('itemtype', 'https://schema.org/Product');
+
+        if (image) image.setAttribute('itemprop', 'image');
+        if (category) category.setAttribute('itemprop', 'category');
+        if (title) title.setAttribute('itemprop', 'name');
+        if (description) description.setAttribute('itemprop', 'description');
+
+        if (priceRow) {
+          priceRow.setAttribute('itemprop', 'offers');
+          priceRow.setAttribute('itemscope', '');
+          priceRow.setAttribute('itemtype', 'https://schema.org/Offer');
+        }
+
+        if (price) {
+          const normalizedPrice = price.textContent.replace(/[^\d.]/g, '');
+          price.setAttribute('itemprop', 'price');
+          price.setAttribute('content', normalizedPrice);
+        }
+
+        if (priceRow && !priceRow.querySelector('meta[itemprop="priceCurrency"]')) {
+          const currency = document.createElement('meta');
+          currency.setAttribute('itemprop', 'priceCurrency');
+          currency.setAttribute('content', 'USD');
+
+          const availability = document.createElement('link');
+          availability.setAttribute('itemprop', 'availability');
+          availability.setAttribute('href', 'https://schema.org/InStock');
+
+          priceRow.appendChild(currency);
+          priceRow.appendChild(availability);
+        }
+
+        if (productName && !item.querySelector('meta[itemprop="brand"]')) {
+          const brand = document.createElement('meta');
+          brand.setAttribute('itemprop', 'brand');
+          brand.setAttribute('content', 'Ohlala Croisant Storefour');
+          item.appendChild(brand);
+        }
+      }
+
+      function createDetailsBlock(productName, detailInfo, index) {
+        const details = document.createElement('details');
+        details.className = 'mt-2 mb-4 rounded-lg border border-amber-100 bg-amber-50/50 px-3 py-2';
+
+        const summary = document.createElement('summary');
+        summary.className = 'cursor-pointer select-none text-sm font-semibold text-amber-900 marker:text-amber-700';
+        summary.textContent = 'Más detalles';
+
+        const srContext = document.createElement('span');
+        srContext.className = 'sr-only';
+        srContext.textContent = ` de ${productName}`;
+        summary.appendChild(srContext);
+
+        const content = document.createElement('div');
+        content.className = 'mt-2 space-y-2 text-xs leading-relaxed text-gray-700';
+        content.id = `producto-detalle-${index + 1}`;
+
+        const materials = document.createElement('p');
+        const materialsLabel = document.createElement('strong');
+        materialsLabel.className = 'text-gray-800';
+        materialsLabel.textContent = 'Materiales: ';
+        const materialsText = document.createElement('span');
+        materialsText.setAttribute('itemprop', 'material');
+        materialsText.textContent = detailInfo.materials;
+        materials.appendChild(materialsLabel);
+        materials.appendChild(materialsText);
+
+        const usage = document.createElement('p');
+        const usageLabel = document.createElement('strong');
+        usageLabel.className = 'text-gray-800';
+        usageLabel.textContent = 'Uso recomendado: ';
+        const usageText = document.createElement('span');
+        usageText.textContent = detailInfo.usage;
+        usage.appendChild(usageLabel);
+        usage.appendChild(usageText);
+
+        content.appendChild(materials);
+        content.appendChild(usage);
+        details.appendChild(summary);
+        details.appendChild(content);
+
+        return details;
+      }
+
+      function injectProductDetails() {
+        catalogItems.forEach((item, index) => {
+          const productTitle = item.querySelector('h3');
+          const description = item.querySelector('p');
+          if (!productTitle || !description || item.querySelector('details')) return;
+
+          const productName = productTitle.textContent.trim();
+          const detailInfo = productDetails[productName];
+          if (!detailInfo) return;
+
+          enhanceSchema(item, productName);
+
+          const detailsBlock = createDetailsBlock(productName, detailInfo, index);
+          description.insertAdjacentElement('afterend', detailsBlock);
+        });
+      }
+
+      injectProductDetails();
+
+      function setActiveButton(activeButton) {
+        filterButtons.forEach((button) => {
+          const isActive = button === activeButton;
+          button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+          button.classList.toggle('bg-amber-900', isActive);
+          button.classList.toggle('text-white', isActive);
+          button.classList.toggle('bg-white', !isActive);
+          button.classList.toggle('text-gray-700', !isActive);
+        });
+      }
+
+      function applyFilter(filter) {
+        catalogItems.forEach((item) => {
+          const category = item.getAttribute('data-category');
+          const showItem = filter === 'all' || category === filter;
+          item.classList.toggle('hidden', !showItem);
+        });
+      }
+
+      filterButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          const filter = button.getAttribute('data-filter');
+          setActiveButton(button);
+          applyFilter(filter);
+        });
+      });
+    });
+  </script>
   <script defer src="app.js"></script>
 </body>
 </html>
